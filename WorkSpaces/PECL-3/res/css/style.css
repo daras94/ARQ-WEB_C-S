@@ -20,3 +20,29 @@ body {
 {
 	word-spacing: inherit;
 }
+
+#listado
+{
+	width:200px;
+	
+}
+
+#listado li
+{
+	background-color:white;
+	width:40%;
+	list-style: none;
+	padding-bottom: 15px;
+}
+
+#listado li a
+{
+	text-decoration: none;
+	color:green;
+}
+
+#listado li a:hover
+{
+	color:#FF00EC;
+}
+
