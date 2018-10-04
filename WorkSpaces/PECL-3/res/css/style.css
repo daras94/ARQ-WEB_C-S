@@ -15,3 +15,8 @@ body {
 	-moz-border-radius:50px;
 	-webkit-border-radius:50px;
 }
+
+#information
+{
+	word-spacing: inherit;
+}
