@@ -98,6 +98,7 @@ body {
 #listado li a {
 	text-decoration: none;
 	color:green;
+	align-text:center;
 }
 
 #listado li a:hover {
