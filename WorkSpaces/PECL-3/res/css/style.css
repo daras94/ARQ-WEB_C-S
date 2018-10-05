@@ -183,3 +183,48 @@ textarea {
 	min-height: 200px;
 }
 
+#formulario
+{
+	padding: 20px;
+	width:30%;
+	margin:auto;
+	border: 2px solid black;
+	border-radius: 20px;
+}
+
+#botonFormulario
+{
+	margin-bottom:20px;
+}
+
+#filtros
+{
+	width:100%;
+	margin:auto;
+}
+
+#shoppingFilter
+{
+	height: 30px;
+	width: 25%;
+	float:right;
+}
+
+#filter
+{
+	height: 30px;
+	width:25%;
+	float:right;
+}
+
+#tablaShopping
+{
+	width:100%;
+	margin-top:100px;
+}
+
+#contactanosTag
+{
+	margin-top:10px;
+	text-align:center;
+}

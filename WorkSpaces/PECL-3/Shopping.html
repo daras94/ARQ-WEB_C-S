@@ -1,10 +1,122 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+  	<head>
+      	<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+      	<title>Mascoteca de la UAH</title>
+ 		<link rel="stylesheet" type="text/css" href="./res/css/style.css"/>
+ 		
+ 		
+	</head>
+	<body>
+		<div id="encabezado-1">
+			<h1><img src="./res/img/logo.png"></h1>
+				<div id="information" style="display: inline-block;">
+		 			<a href="./AboutUs.html"><img src="./res/img/augmented-reality.png">Sobre nosotros</a>
+		 			<a href="./LocateUs.html"><img src="./res/img/map-2.png">Localizador de tiendas</a>
+		 			<a href="./ContactUs.html"><img src="./res/img/battle.png">Contacto</a>
+		 			<a href="./Videos.html"><img src="./res/img/smartphone.png">Videos</a>
+		 			<a href="./Adopt.html"><img src="./res/img/egg.png">Adopciones</a>
+		 			<a href="./Donate.html"><img src="./res/img/fight.png">Donaciones</a>
+				</div>
 
-</body>
+				
+		</div>
+		<div id="cuerpo">
+			<div id="menu_izda">
+				<ul id="listado">
+				<li><a href="./Cats.html"><img src="./res/img/meowth.png">Gatos</a></li>
+		 		<li><a href="./Dogs.html"><img src="./res/img/eevee-2.png">Perros</a></li>
+		 		<li><a href="./GuideDogs.xhtml"><img src="./res/img/compass.png">Perros guia</a></li>
+		 		<li><a href="./Birds.xhtml"><img src="./res/img/pidgey.png">Pajaros</a></li>
+		 		<li><a href="./Rats.html"><img src="./res/img/rattata.png">Roedores</a></li>
+		 		<li><a href="./Exotics.html"><img src="./res/img/weedle.png">Exoticos</a></li>
+		 		<li><a href="./Shopping.html"><img src="./res/img/pokecoin.png">Compra</a></li>
+		 	</ul>
+			</div>
+			<div id="menu_dech">
+				<div id="filtros">
+					<select id="shoppingFilter">
+						<option value="ComGatos">Comida para gatos</option>
+  						<option value="AcGatos">Accesorios para gatos</option>
+  						<option value="ComPerros">Comida para perros</option>
+  						<option value="AcPerros">Accesorios para perros</option>
+  						<option value="ComExoticos">Comida para animales exóticos</option>
+  						<option value="AcExoticos">Accesorios para animales exóticos</option>
+  						<option value="ComRatas">Comida para roedores</option>
+  						<option value="AcRatas">Accesorios para roedores</option>
+  						<option value="ComPajaros">Comida para aves</option>
+  						<option value="AcPajaros">Accesorios para aves</option>
+					</select>
+					
+					<select id="filter">
+						<option value="MenorAMayor">Precio: Menor a mayor</option>
+  						<option value="MayorAMenor">Precio: Mayor a menor</option>
+  						<option value="Recientes">Novedades</option>
+  						<option value="Famoso">Más vendidos</option>
+					</select>
+				</div>
+				
+				<div>
+					<table id="tablaShopping">
+						<tr>
+							<th>Fotografía</th>
+							<th>Nombre</th>
+							<th>Descripción</th>
+							<th>Precio</th>
+							<th></th>
+						</tr>
+						<tr>
+							<th><img src="./res/img/transportin.png" style="width:200px"></th>
+							<th>Transportín</th>
+							<th>Transportín para perros y gatos de gran tamaño.</th>
+							<th>15.99</th>
+							<th><button>Comprar</button></th>
+						</tr>
+						<tr>
+							<th><img src="./res/img/comidaGatos.png" style="width:200px"></th>
+							<th>Comida gatos</th>
+							<th>Comida para gatos.</th>
+							<th>6.44</th>
+							<th><button>Comprar</button></th>
+						</tr>
+						<tr>
+							<th><img src="./res/img/comidaPerros.png" style="width:200px"></th>
+							<th>Comida perros</th>
+							<th>Comida para perros.</th>
+							<th>7.99</th>
+							<th><button>Comprar</button></th>
+						</tr>
+						<tr>
+							<th><img src="./res/img/comidaPajaros.png" style="width:200px"></th>
+							<th>Comida pájaros</th>
+							<th>Comida para pájaros.</th>
+							<th>3.99</th>
+							<th><button>Comprar</button></th>
+						</tr>
+						<tr>
+							<th><img src="./res/img/comidaRatones.png" style="width:200px"></th>
+							<th>Comida ratones</th>
+							<th>Comida para ratones.</th>
+							<th>3.99</th>
+							<th><button>Comprar</button></th>
+						</tr>
+						<tr>
+							<th><img src="./res/img/comidaGeckos.png" style="width:200px"></th>
+							<th>Comida geckos</th>
+							<th>Comida para geckos.</th>
+							<th>4.99</th>
+							<th><button>Comprar</button></th>
+						</tr>
+					</table>
+				</div>
+				
+				<p id="contactanosTag">¿No encuentras lo que buscas? <a href="./ContactUs.html">¡Contáctanos!</a></p>
+			</div>
+			<div id="nav">
+				<a id="ant" href="./Exotics.html"><img src="./res/img/up-arrow.png" title="Previous"></a>
+				<a id="home" href="./index.html"><img src="./res/img/star.png" title="Home"></a>
+				<a id="sig" href="./Cats.html"><img src="./res/img/up-arrow2.png" title="Next"></a>
+			</div>
+		</div>
+	</body>
 </html>
