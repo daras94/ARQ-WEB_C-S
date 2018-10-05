@@ -105,3 +105,9 @@ body {
 #listado li a:hover {
 	color:#FF00EC;
 }
+
+#map {
+	height: 400px;  /* The height is 400 pixels */
+	margin: 20px;
+	width: 70%;  /* The width is the width of the web page */
+       }
