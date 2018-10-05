@@ -1,0 +1,107 @@
+body {
+	background-image: url('../img/background.jpg');
+	background-size: 1024;
+}
+
+#encabezado-1 {
+	background-color:  #76d7c4;
+	height: 250px;
+	text-align: center;
+	border:2px solid #2eb9ce;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #2eb9ce;
+	border-radius:50px;
+	-moz-border-radius:50px;
+	-webkit-border-radius:50px;
+}
+
+#information
+{
+	word-spacing: inherit;
+}
+
+#cuerpo {
+	position: center;
+	align-content: center;
+	width: 96%;
+	padding: 15px;
+	margin: 10px;
+}
+
+#menu_izda {
+	width: 18%;
+	background-color: #fff;
+	float: left;
+	margin-left: 15px;
+	border-style: solid;
+	border-color: #2eb9ce;
+	border-radius:50px;
+	-moz-border-radius:50px;
+	-webkit-border-radius:50px;
+}
+
+#menu_dech {
+	min-height: 220px;
+	width: 79%;
+	background-color: #fff;
+	float: right;
+	border-style: solid;
+	border-color: #2eb9ce;
+	border-radius:50px;
+	-moz-border-radius:50px;
+	-webkit-border-radius:50px;
+}
+
+#sig {
+	margin: 12px;
+	float:  right;
+}
+
+#home {
+	margin-top: 25px;
+	padding-left: 40%;
+}
+
+ #home a {
+ 	padding-top: 15px;
+ }
+
+#ant {
+	float: left;
+	margin: 12px;
+}
+
+#listado {
+	width:200px;
+}
+
+#nav {
+	margin-top: 15px;
+	width: 79%;
+	height: 50px;
+	background-color: #fff;
+	float: right;
+	border-style: solid;
+	border-color: #2eb9ce;
+	border-radius: 50px;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	position: relative;
+}
+
+#listado li {
+	list-style: none;
+	padding-bottom: 15px;
+}
+
+#listado li a {
+	text-decoration: none;
+	color:green;
+	align-text:center;
+}
+
+#listado li a:hover {
+	color:#FF00EC;
+}
+
