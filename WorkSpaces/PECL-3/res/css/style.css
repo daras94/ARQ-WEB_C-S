@@ -43,7 +43,8 @@ body {
 
 #menu_dech {
 	min-height: 220px;
-	width: 79%;
+	padding: 15px;
+	width: 78%;
 	background-color: #fff;
 	float: right;
 	border-style: solid;
@@ -96,13 +97,13 @@ body {
 	padding-bottom: 15px;
 }
 
-#listado li a {
+a {
 	text-decoration: none;
 	color:green;
 	align-text:center;
 }
 
-#listado li a:hover {
+a:hover {
 	color:#FF00EC;
 }
 
@@ -110,4 +111,75 @@ body {
 	height: 400px;  /* The height is 400 pixels */
 	margin: 20px;
 	width: 70%;  /* The width is the width of the web page */
-       }
+}
+
+#dec-text, #log-box {
+	min-height: 20px;
+	margin: 10px;
+	padding: 15px;
+	background-color: #f8f9f9;
+	border-style: solid;
+	border-color: #ccc;
+	border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+}
+
+
+#dec-text {
+	width: 60%;
+	float: left;
+}
+
+#log-box {
+	width: 32%;
+	float: right;
+}
+
+select, input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    -moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+
+}
+
+button {
+    background-color: #FF00EC;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    -moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+    border-radius: 20px;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+    border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+}
+
+textarea {
+	border: 3px solid #f1f1f1;
+	width: 100%;
+	min-height: 200px;
+}
+
