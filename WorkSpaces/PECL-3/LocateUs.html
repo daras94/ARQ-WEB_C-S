@@ -7,53 +7,39 @@
 		<script type="text/javascript">
 			// Initialize and add the map
 			function initMap() {
-			  	// The location of Uluru
-			  	var uluru = {
-			  		lat: -25.344, 
-			  		lng: 131.036
-			  	};
-			  	// The map, centered at Uluru
-			  	var map = new google.maps.Map(document.getElementById('map'), {
-			  		zoom: 4, 
-			  		center: uluru
-			  	});
-			  	// The marker, positioned at Uluru
-				var marker = new google.maps.Marker({
-				  	position: uluru, 
-				  	map: map
-				});
+				var mapOptions = {
+				    center: new google.maps.LatLng(51.5, -0.12),
+				    zoom: 10,
+				    mapTypeId: google.maps.MapTypeId.HYBRID
+				}
+				var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 			}
 		</script>
-		<!--Load the API from the specified URL
-	    * The async attribute allows the browser to render the page while the API loads
-	    * The key parameter will contain your own API key (which is not needed for this tutorial)
-	    * The callback parameter executes the initMap() function
-	    -->
-    	<script type="text/javascript" async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
 	</head>
 	<body>
 		<div id="encabezado-1">
-			<h1><img src="./res/img/logo.png"></img></h1>
+			<h1><img src="./res/img/logo.png" alt="icon logo"></img></h1>
 	        <div id="information" style="display: inline-block;">
-				<a href="./AboutUs.html"><img src="./res/img/augmented-reality.png"></img>Sobre nosotros</a>
-				<a href="./Dogs.html"><img src="./res/img/map-2.png"></img>Localizador de tiendas</a>
-				<a href="./ContactUs.html"><img src="./res/img/battle.png"></img>Contacto</a>
-				<a href="./Videos.html"><img src="./res/img/smartphone.png"></img>Videos</a>
-				<a href="./Adopt.html"><img src="./res/img/egg.png"></img>Adopciones</a>
-				<a href="./Donate.html"><img src="./res/img/fight.png"></img>Donaciones</a>
+				<a href="./AboutUs.html"><img src="./res/img/augmented-reality.png" alt="icon about"></img>Sobre nosotros</a>
+				<a href="./Dogs.html"><img src="./res/img/map-2.png" alt="icon dogs"></img>Localizador de tiendas</a>
+				<a href="./ContactUs.html"><img src="./res/img/battle.png" alt="contact"></img>Contacto</a>
+				<a href="./Videos.html"><img src="./res/img/smartphone.png" alt="icon videos"></img>Videos</a>
+				<a href="./Adopt.html"><img src="./res/img/egg.png" alt="icon Adopt"></img>Adopciones</a>
+				<a href="./Donate.html"><img src="./res/img/fight.png" alt="icon donate"></img>Donaciones</a>
 			</div>
 		</div>
 		<div id="cuerpo">
 			<div id="menu_izda">
 				<ul id="listado">
-					<li><a href="./Cats.html"><img src="./res/img/meowth.png">Gatos</a></li>
-			 		<li><a href="./Dogs.html"><img src="./res/img/eevee-2.png">Perros</a></li>
-			 		<li><a href="./GuideDogs.xhtml"><img src="./res/img/compass.png">Perros guia</a></li>
-			 		<li><a href="./Birds.xhtml"><img src="./res/img/pidgey.png">Pajaros</a></li>
-			 		<li><a href="./Rats.html"><img src="./res/img/rattata.png">Roedores</a></li>
-			 		<li><a href="./Exotics.html"><img src="./res/img/weedle.png">Exoticos</a></li>
-			 		<li><a href="./Shopping.html"><img src="./res/img/pokecoin.png">Compra</a></li>
-			 		<li><a href="./Donate.html"><img src="./res/img/pokecoin.png"></img>Donaciones</a></li>
+					<li><a href="./Cats.html"><img src="./res/img/meowth.png" alt="Icono de gato"></img>Gatos</a></li>
+			 		<li><a href="./Dogs.html"><img src="./res/img/eevee-2.png" alt="Icono de perro"></img>Perros</a></li>
+			 		<li><a href="./GuideDogs.xhtml"><img src="./res/img/compass.png" alt="Icono de perro guía"></img>Perros guia</a></li>
+			 		<li><a href="./Birds.xhtml"><img src="./res/img/pidgey.png" alt="Icono de pájaro"></img>Pajaros</a></li>
+			 		<li><a href="./Rats.xhtml"><img src="./res/img/rattata.png" alt="Icono de rata"></img>Roedores</a></li>
+			 		<li><a href="./Exotics.xhtml"><img src="./res/img/weedle.png" alt="Icono de animal exótico"></img>Exoticos</a></li>
+			 		<li><a href="./Shopping.html"><img src="./res/img/pokecoin.png" alt="Icono de moneda"></img>Compra</a></li>
+			 		<li><a href="./Accessories.html"><img src="./res/img/accesorios.png" alt="Icono de accesorio"></img>Accesorios</a></li>
+			 		<li><a href="./Alimentacion.xhtml"><img src="./res/img/potion.png" alt="Icono de pocion"></img>Alimentacion</a></li>
 			 	</ul>
 			</div>
   			<div id="menu_dech">        
@@ -61,17 +47,18 @@
             		<div id="map"></div>
             	</div>
             	<div id="log-box">
-            		<h3><b><center>Buque su tienda mas cercana:</center></b></h3>
+            		<h3 align="center"><b>Buque su tienda mas cercana:</b></h3>
             		<p> A continuación, introduce tu código postal para localizar tu tienda más cercana: </p>
-            		<input type="text" placeholder="ejemplo: 28850" />
+            		<input type="text"/>
             		<input type="button" value="Buscar" /> 
             	</div>
       		</div>
+      		<div id="nav">
+				<a id="ant" href="./ContactUs.html"><img src="./res/img/up-arrow.png" title="Previous" alt="icon previous"></img></a>
+				<a id="home" href="./index.html"><img src="./res/img/star.png" title="Home" alt="icon home"></img></a>
+				<a id="sig" href="./login.xhtml"><img src="./res/img/up-arrow2.png" title="Next" alt="icon siguiente"></img></a>
+			</div>
 		</div>
-       	<div id="nav">
-			<a id="ant" href=""><img src="./res/img/up-arrow.png" title="Previous"></img></a>
-			<a id="home" href="index.html"><img src="./res/img/star.png" title="Home"></img></a>
-			<a id="sig" href=""><img src="./res/img/up-arrow2.png" title="Next"></img></a>
-		</div>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&amp;callback=initMap" type="text/javascript"></script>
 	</body>
 </html>
