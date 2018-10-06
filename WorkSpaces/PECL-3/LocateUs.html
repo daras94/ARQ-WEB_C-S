@@ -1,84 +1,77 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Localizacion</title>
-<link href="./res/css/style.css" rel="stylesheet" type="text/css" />
-</head>
-
-<body>
-
-
-<div id="encabezado-1">
-			<h1><img src="./res/img/galeria.png"></img></h1>
-            
-				<div id="information" style="display: inline-block;">
-		 			<a href="./AboutUs.html"><img src="./res/img/augmented-reality.png"></img>Sobre nosotros</a>
-		 			<a href="./LocateUs.html"><img src="./res/img/map-2.png"></img>Localizador de tiendas</a>
-		 			<a href="./ContactUs.html"><img src="./res/img/battle.png"></img>Contacto</a>
-		 			<a href="./Videos.html"><img src="./res/img/smartphone.png"></img>Videos</a>
-		 			<a href="./Adopt.html"><img src="./res/img/egg.png"></img>Adopciones</a>
-		 			<a href="./Donate.html"><img src="./res/img/fight.png"></img>Donaciones</a>
-				</div>
-
-				
-</div>
-
-<div id="cuerpo">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Localizacion</title>
+		<link href="./res/css/style.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript">
+			// Initialize and add the map
+			function initMap() {
+			  	// The location of Uluru
+			  	var uluru = {
+			  		lat: -25.344, 
+			  		lng: 131.036
+			  	};
+			  	// The map, centered at Uluru
+			  	var map = new google.maps.Map(document.getElementById('map'), {
+			  		zoom: 4, 
+			  		center: uluru
+			  	});
+			  	// The marker, positioned at Uluru
+				var marker = new google.maps.Marker({
+				  	position: uluru, 
+				  	map: map
+				});
+			}
+		</script>
+		<!--Load the API from the specified URL
+	    * The async attribute allows the browser to render the page while the API loads
+	    * The key parameter will contain your own API key (which is not needed for this tutorial)
+	    * The callback parameter executes the initMap() function
+	    -->
+    	<script type="text/javascript" async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+	</head>
+	<body>
+		<div id="encabezado-1">
+			<h1><img src="./res/img/logo.png"></img></h1>
+	        <div id="information" style="display: inline-block;">
+				<a href="./AboutUs.html"><img src="./res/img/augmented-reality.png"></img>Sobre nosotros</a>
+				<a href="./Dogs.html"><img src="./res/img/map-2.png"></img>Localizador de tiendas</a>
+				<a href="./ContactUs.html"><img src="./res/img/battle.png"></img>Contacto</a>
+				<a href="./Videos.html"><img src="./res/img/smartphone.png"></img>Videos</a>
+				<a href="./Adopt.html"><img src="./res/img/egg.png"></img>Adopciones</a>
+				<a href="./Donate.html"><img src="./res/img/fight.png"></img>Donaciones</a>
+			</div>
+		</div>
+		<div id="cuerpo">
 			<div id="menu_izda">
 				<ul id="listado">
-				<li><a href="./AboutUs.html"><img src="./res/img/meowth.png"></img>Gatos</a></li>
-		 		<li><a href="./LocateUs.html"><img src="./res/img/eevee-2.png"></img>Perros</a></li>
-		 		<li><a href="./Donate.html"><img src="./res/img/compass.png"></img>Perros guia</a></li>
-		 		<li><a href="./ContactUs.html"><img src="./res/img/pidgey.png"></img>Pajaros</a></li>
-		 		<li><a href="./Videos.html"><img src="./res/img/rattata.png"></img>Roedores</a></li>
-		 		<li><a href="./Adopt.html"><img src="./res/img/weedle.png"></img>Exoticos</a></li>
-		 		<li><a href="./Donate.html"><img src="./res/img/pokecoin.png"></img>Compra</a></li>
-		 	</ul>
+					<li><a href="./Cats.html"><img src="./res/img/meowth.png">Gatos</a></li>
+			 		<li><a href="./Dogs.html"><img src="./res/img/eevee-2.png">Perros</a></li>
+			 		<li><a href="./GuideDogs.xhtml"><img src="./res/img/compass.png">Perros guia</a></li>
+			 		<li><a href="./Birds.xhtml"><img src="./res/img/pidgey.png">Pajaros</a></li>
+			 		<li><a href="./Rats.html"><img src="./res/img/rattata.png">Roedores</a></li>
+			 		<li><a href="./Exotics.html"><img src="./res/img/weedle.png">Exoticos</a></li>
+			 		<li><a href="./Shopping.html"><img src="./res/img/pokecoin.png">Compra</a></li>
+			 		<li><a href="./Donate.html"><img src="./res/img/pokecoin.png"></img>Donaciones</a></li>
+			 	</ul>
 			</div>
-  <div id="menu_dech">
-                    
-            <h3>Localización</h3>
-            <p> A continuación, introduce tu código postal para localizar tu tienda más cercana: </p>
-            <input type="text"/>    <input type="button" value="Buscar" /> 
-            <center>
-            
-            <div id="map"></div>
-            <script>
-// Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  var uluru = {lat: -25.344, lng: 131.036};
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: uluru});
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: uluru, map: map});
-}
-    </script>
-    <!--Load the API from the specified URL
-    * The async attribute allows the browser to render the page while the API loads
-    * The key parameter will contain your own API key (which is not needed for this tutorial)
-    * The callback parameter executes the initMap() function
-    -->
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-    </script>
-            
-            </center> 
-            
-     
-    </div>
-</div>
-            
-            
-            
-			<div id="nav">
-				<a id="ant" href=""><img src="./res/img/up-arrow.png" title="Previous"></img></a>
-				<a id="home" href=""><img src="./res/img/star.png" title="Home"></img></a>
-				<a id="sig" href=""><img src="./res/img/up-arrow2.png" title="Next"></img></a>
-			</div>
-
-
-</body>
+  			<div id="menu_dech">        
+            	<div id="dec-text">
+            		<div id="map"></div>
+            	</div>
+            	<div id="log-box">
+            		<h3><b><center>Buque su tienda mas cercana:</center></b></h3>
+            		<p> A continuación, introduce tu código postal para localizar tu tienda más cercana: </p>
+            		<input type="text" placeholder="ejemplo: 28850" />
+            		<input type="button" value="Buscar" /> 
+            	</div>
+      		</div>
+		</div>
+       	<div id="nav">
+			<a id="ant" href=""><img src="./res/img/up-arrow.png" title="Previous"></img></a>
+			<a id="home" href="index.html"><img src="./res/img/star.png" title="Home"></img></a>
+			<a id="sig" href=""><img src="./res/img/up-arrow2.png" title="Next"></img></a>
+		</div>
+	</body>
 </html>

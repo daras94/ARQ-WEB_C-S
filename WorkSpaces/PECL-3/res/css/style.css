@@ -30,10 +30,11 @@ body {
 }
 
 #menu_izda {
-	width: 18%;
+	width: 17%;
 	background-color: #fff;
 	float: left;
 	margin-left: 15px;
+	padding: 10px;
 	border-style: solid;
 	border-color: #2eb9ce;
 	border-radius:50px;
@@ -75,7 +76,7 @@ body {
 }
 
 #listado {
-	width:200px;
+	margin-left: -25px;
 }
 
 #nav {
@@ -94,7 +95,16 @@ body {
 
 #listado li {
 	list-style: none;
-	padding-bottom: 15px;
+	border-bottom: 1px solid #f1f1f1;
+	margin: 2px;
+}
+
+#listado ul li a {
+	margin: 10px;
+}
+
+#listado li img {
+	margin: 5px;
 }
 
 a {
@@ -109,8 +119,7 @@ a:hover {
 
 #map {
 	height: 400px;  /* The height is 400 pixels */
-	margin: 20px;
-	width: 70%;  /* The width is the width of the web page */
+	width: 100%;  /* The width is the width of the web page */
 }
 
 #dec-text, #log-box {
@@ -129,14 +138,19 @@ a:hover {
 #dec-text {
 	width: 60%;
 	float: left;
+	text-justify: inter-word;
+	text-align: justify;
+	text-justify: inter-word;
 }
 
 #log-box {
 	width: 32%;
 	float: right;
+	text-align: justify;
+	text-justify: inter-word;
 }
 
-select, input[type=text], input[type=password] {
+select, input[type=text], input[type=password], input[type=button] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -145,7 +159,6 @@ select, input[type=text], input[type=password] {
     box-sizing: border-box;
     -moz-border-radius: 20px;
 	-webkit-border-radius: 20px;
-
 }
 
 button {
