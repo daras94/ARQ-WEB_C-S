@@ -18,16 +18,19 @@
       <td><form>
 		  <p>
 		    <label>
-		      <input id="primeros_platos" type="radio" name="Primeros platos" value="opción">
+		      <input id="primeros_platos" type="radio" name="Primeros platos" value="opción" 
+					 onclick="primeros()">
 		      Primeros platos</label>
  				
 		    <br>
 		    <label>
-		      <input type="radio" name="Primeros platos" value="opción" >
+		      <input type="radio" name="Primeros platos" value="opción" 
+					 onclick="segundos()">
 		      Segundos platos</label>
 		    <br>
 		    <label>
-		      <input type="radio" name="Primeros platos" value="opción" >
+		      <input type="radio" name="Primeros platos" value="opción" 
+					 onclick="postres()">
 		      Postres</label>
 		    <br>
 	      </p>
@@ -45,18 +48,16 @@
     <tr>
       <td>
 		  <form>
-			  <select name="selecciones" size="6">
-				<option>Macarrones</option> 
-				<option>Paella</option> 
-				<option>Pollo Asado</option> 
-				<option>Pato a la Naranja</option> 
-				<option>Caldo Gallego</option>
+			  <select id="selecciones_platos" size="4">
+				  <!-- No borrar este apartado aunque este vacia para no tener problemas -->
+				  
+				
 				</select>
 		  </form>
 	  </td>
       <td>
 		<form>
-			  <select name="selecciones" size="6">
+			  <select name="selecciones" size="4">
 				<option>Ensalada mixta</option> 
 				<option>Ensala cesar</option> 
 				<option>Lubina al horno</option> 
@@ -86,6 +87,8 @@
 		
 			<input type="button" value="Pagado" onclick="myFunction()"></button>  
 		</form>
+
+	<p id="resultado"></p>
 	  
 	 
 </center>
