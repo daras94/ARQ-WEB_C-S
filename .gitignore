@@ -8,7 +8,7 @@ configs/
 dwsync.xml
 dw_php_codehinting.config
 *.mno
-
+*._*
 ### Eclipse ###
 
 .metadata
