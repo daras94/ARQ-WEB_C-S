@@ -1,0 +1,26 @@
+#encabezado-1 {
+	background-color:  #76d7c4;
+	height: 200px;
+	text-align: center;
+	border:2px solid #2eb9ce;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #2eb9ce;
+	border-radius:50px;
+	-moz-border-radius:50px;
+	-webkit-border-radius:50px;
+}
+
+#margen {
+	background-image: url('../img/tothebone.jpeg');
+	background-size: 1600px;
+	background-repeat: no-repeat;
+    background-position: center; 
+ }
+ 
+ #selector{
+ 	width:300px;
+ 	height:70px;
+ 	font-size:23px;
+ 	text-align-last:center;
+ }
