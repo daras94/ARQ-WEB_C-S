@@ -5,92 +5,99 @@
 <title>Ejercicio 1</title>
 <script src="res/script/jquery.js" type="text/javascript"></script>
 <script src="res/script/script.js" type="text/javascript"></script>
+	
+	<script>
+		var mesa_1 = [];
+		var mesa_2 = [];
+		var mesa_3 = [];
+		var mesa_4 = [];
+		var mesa_5 = []; 
+		
+		var mesas = [mesa_1, mesa_2, mesa_3, mesa_4, mesa_5];
+		
+	</script>	
 </head> 
 
 <body>
-	<center>
-		
-		<h1 id="encabezado">Restaurante RusoMar</h1>
-		
-	<table width="350" border="0">
+<center>
+<h1 id="encabezado">Restaurante RusoMar</h1>
+<table width="350" border="0">
   <tbody>
     <tr>
       <td><form>
-		  <p>
-		    <label>
-		      <input id="primeros_platos" type="radio" name="Primeros platos" value="opción" 
-					 onclick="primeros()">
-		      Primeros platos</label>
- 				
-		    <br>
-		    <label>
-		      <input type="radio" name="Primeros platos" value="opción" 
-					 onclick="segundos()">
-		      Segundos platos</label>
-		    <br>
-		    <label>
-		      <input type="radio" name="Primeros platos" value="opción" 
-					 onclick="postres()">
-		      Postres</label>
-		    <br>
-	      </p>
+  <p>
+    <label>
+      <input id="primeros_platos" type="radio" name="Primeros platos" value="opción" onclick="primeros()">
+      Primeros platos
+  </label>
+  
+    <br>
+    <label>
+      <input type="radio" name="Primeros platos" value="opción" onclick="segundos()">
+      Segundos platos</label>
+    <br>
+    <label>
+      <input type="radio" name="Primeros platos" value="opción" onclick="postres()">
+      Postres</label>
+    <br>
+      </p>
       </form></td>
       <td><form>
-		  	<select name="select">
-				<option value="value1">Mesa 1</option> 
-  				<option value="value2">Mesa 2</option>
-  				<option value="value3">Mesa 3</option>
-				<option value="value3">Mesa 4</option>
-				<option value="value3">Mesa 5</option>
-		  	</select>
-		  </form></td>
+  <select name="select" id="opt_mes" size="5">
+		<option value="Mesa 1" onclick="cambio_mesa(mesas)">Mesa 1</option> 
+		<option value="Mesa 2" onclick="cambio_mesa(mesas)">Mesa 2</option>
+		<option value="Mesa 3" onclick="cambio_mesa(mesas)">Mesa 3</option>
+		<option value="Mesa 4" onclick="cambio_mesa(mesas)">Mesa 4</option>
+		<option value="Mesa 5" onclick="cambio_mesa(mesas)">Mesa 5</option>
+  </select>
+  </form></td>
     </tr>
     <tr>
       <td>
-		  <form>
-			  <select id="selecciones_platos" size="4">
-				  <!-- No borrar este apartado aunque este vacia para no tener problemas -->
-				  
-				
-				</select>
-		  </form>
-	  </td>
+  <form>
+  <select id="selecciones_platos" size="4" onclick="seleccion_primero(mesas)">
+  <!-- No borrar este apartado aunque este vacia para no tener problemas -->
+<option>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  </option> 
+</select>
+  </form>
+  </td>
       <td>
-		<form>
-			  <select name="selecciones" size="4">
-				<option>Ensalada mixta</option> 
-				<option>Ensala cesar</option> 
-				<option>Lubina al horno</option> 
-				<option>Solomillo de cerdo</option> 
-				<option>Pulpo a la gallega</option>
-				</select>
-		  </form>
-		
-		</td>
+<form>
+  <select id="selecciones" name="selecciones" size="4">
+  
+<!--<option>Ensalada mixta</option> 
+<option>Ensala cesar</option> 
+<option>Lubina al horno</option> 
+<option>Solomillo de cerdo</option> 
+<option>Pulpo a la gallega</option>-->
+</select>
+  </form>
+</td>
     </tr>
     <tr>
       <td>&nbsp;</td>
       <td>
-		<form>
-		  <input type="checkbox"> con café
-			<br>
-		  <input type="checkbox"> con copa
-		  </form>
-		</td>
+<form>
+	
+  <input type="button" value="Cafe" onClick="concafe(mesas)"> </button> 
+<br>
+  <input type="button" value="Copa" onClick="concopa(mesas)"> </button> 
+  </form>
+</td>
     </tr>
 
     </tr>
   </tbody>
 </table>
-	Total a pagar por la mesa: <br>
-		<form> <input type="number"> €
-		
-			<input type="button" value="Pagado" onclick="myFunction()"></button>  
-		</form>
+Total a pagar por la mesa: <br>
+<form> <input  id="a_pagar"> €
 
-	<p id="resultado"></p>
-	  
-	 
+<input type="button" value="Pagado" onclick="myFunction(mesas)"></button>   
+</form>
+
+<p id="resultado"></p>
+  
+ 
 </center>
 </body>
 </html>
