@@ -1,8 +1,5 @@
 function concafe(mesas){
-	
-	
 
-	//x.add(plato1)
 	
 	var elemento = document.getElementById("opt_mes");
 	var sel1 = elemento.options[elemento.selectedIndex].value;
