@@ -1,11 +1,96 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Bodega UAH</title>
-	<script type="text/javascript" src="./res/script/jquery.js" ></script>
-	<link rel="stylesheet" type="text/css" href="./res/css/style.css">
-</head>
-<body>
+	<head>
+		<title>Bodega UAH</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script type="text/javascript" src="./res/script/jquery.js" ></script>
+		<link rel="stylesheet" type="text/css" href="./res/css/style.css">
+		<link rel="stylesheet" type="text/css" href="./res/css/slideshow.css">
+		<link rel="stylesheet" type="text/css" href="./res/css/login.css">
+	</head>
+	<body>
+		<div class="header">
+		  	<a href="#default" class="logo" alt="Home"></a>
+		  	<div class="header-right">
+			    <a class="active" href="./index.html">Home</a>
+			    <a href="./page/ejercicio1.html">Ejercicio 1</a>
+			    <a href="./page/ejercicio22.html">Ejercicio 2.2</a>
+			    <a href="./page/ejercicio2.3.html">Ejercicio 2.3</a>
+		  	</div>
+		</div>
+		<div id="cuerpo">
+			<div id="slides-box">
+				<div class="slideshow-container">
+					<!-- Full-width images with number and caption text -->
+					<div class="mySlides fade">
+						<div class="numbertext">1 / 2</div>
+						<img src="./res/img/slide/cine.jpg">
+						<div class="text">Caption Text</div>
+					</div>
 
-</body>
+					<div class="mySlides fade">
+						<div class="numbertext">2 / 2</div>
+						<img src="./res/img/slide/restaurant.png">
+						<div class="text">Caption Two</div>
+					</div>
+				</div>
+				<!-- The dots/circles -->
+				<div style="text-align:center">
+					<span class="dot" onclick="currentSlide(1)"></span>
+					<span class="dot" onclick="currentSlide(2)"></span>
+				</div>
+			</div>
+			<div id="login-box">
+				<form action="/action_page.php">
+				  	<div class="imgcontainer">
+				    	<img src="./res/img/icon/avatar.png" alt="Avatar" class="avatar">
+				  	</div>
+				 	<div class="container">
+				    	<label for="uname"><b>Nombre de Usuario:</b></label>
+				    	<input type="text" placeholder="Enter Username" name="uname" required>
+						<label for="psw"><b>Contraseña:</b></label>
+				    	<input type="password" placeholder="Enter Password" name="psw" required>
+				    	<button type="submit">inciar sesion:</button>
+				    	<label>
+				      		<input type="checkbox" checked="checked" name="remember">Remember me
+				    	</label>
+				  	</div>
+				</form>
+
+			</div>
+			<div id="services">
+				<div class="ser-item">
+					<div class="ser-info" >Cartelera/Peliculas</div>
+					<a href="" alt=""><img src="./res/img/icon/movie.png"/></a>
+				</div>
+				<div class="ser-item">
+					<div class="ser-info" >Geolocalizacion</div>
+					<a href="./page/geo_ej_23y3.html" alt="Geolocalizacion"><img src="./res/img/icon/location.png"/></a>
+				</div>
+				<div class="ser-item">
+					<div class="ser-info" >Taquilla/Entradas</div>
+					<a href="" alt=""><img src="./res/img/icon/taquilla.png"/></a>
+				</div>
+				<div class="ser-item">
+					<div class="ser-info" >Restaurante</div>
+					<a href="" alt=""><img src="./res/img/icon/restaurant.png"/></a>
+				</div>
+				<div class="ser-item">
+					<div class="ser-info" >Pedido</div>
+					<a href="" alt=""><img src="./res/img/icon/order.png"/></a>
+				</div>
+				<div class="ser-item">
+					<div class="ser-info" >Gestion de Mesas</div>
+					<a href="" alt=""><img src="./res/img/icon/table.png"/></a>
+				</div>
+			</div>
+		</div>
+		<footer> 
+			<a href="aviso-legal.html">Aviso legal</a> | 
+			<a href="privacidad.html">Provacidad</a>  | 
+			<a href="contactar.html">Contactar</a> | 
+			Copyright &copy; 2018-2019 
+		</footer>
+	</body>
+	<script type="text/javascript" src="./res/script/slideshow.js"></script>
 </html>

@@ -69,7 +69,7 @@ function cambio_mesa(mesas){
 	//window.alert("hola");
 	var elemento = document.getElementById("opt_mes");
 	var sel = elemento.options[elemento.selectedIndex].value;
-	window.alert("Ha seleccionado la " + sel);
+	//window.alert("Ha seleccionado la " + sel);
 	var x = document.getElementById("selecciones");
 	var i = x.length;
 	do {
@@ -80,7 +80,7 @@ function cambio_mesa(mesas){
 	
 	if(sel=="Mesa 1"){
 		//window.alert("hola");
-		window.alert(mesas[0]);
+		//window.alert(mesas[0]);
 		var mesa_t = mesas[0];
 		var long = mesa_t.length;
 		
@@ -101,7 +101,7 @@ function cambio_mesa(mesas){
 	
 	if(sel=="Mesa 2"){
 		//window.alert("hola");
-		window.alert(mesas[1]);
+		//window.alert(mesas[1]);
 		var mesa_t = mesas[1];
 		var long = mesa_t.length;
 		var final = document.getElementById("selecciones");
@@ -120,7 +120,7 @@ function cambio_mesa(mesas){
 	
 	if(sel=="Mesa 3"){
 		//window.alert("hola");
-		window.alert(mesas[2]);
+		//window.alert(mesas[2]);
 		var mesa_t = mesas[2];
 		var long = mesa_t.length;
 		var final = document.getElementById("selecciones");
@@ -140,7 +140,7 @@ function cambio_mesa(mesas){
 	
 	if(sel=="Mesa 4"){
 		//window.alert("hola");
-		window.alert(mesas[3]);
+		//window.alert(mesas[3]);
 		var mesa_t = mesas[3];
 		var long = mesa_t.length;
 		var final = document.getElementById("selecciones");
@@ -159,7 +159,7 @@ function cambio_mesa(mesas){
 	
 	if(sel=="Mesa 5"){
 		//window.alert("hola");
-		window.alert(mesas[4]);
+		//window.alert(mesas[4]);
 		var mesa_t = mesas[4];
 		var long = mesa_t.length;
 		var final = document.getElementById("selecciones");
