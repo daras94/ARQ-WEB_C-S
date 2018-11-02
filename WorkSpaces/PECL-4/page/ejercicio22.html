@@ -5,41 +5,28 @@
 		<title>Mi pelicula favorita</title>
 		<script src="../res/script/jquery.js" type="text/javascript"></script>
 		<script src="../res/script/script.js" type="text/javascript"></script>
-		<link rel="stylesheet" type="text/css" href="../res/css/style.css">
 	</head> 
 	<body>
 		<div id="encabezado-1">
-			<h2>Mi película favorita</h2>
+			<h2 align='center';><img src="../res/img/mipeliculafavorita.png" alt="Mi pelicula favorita"></h2>
 		</div>
 		<div id="presentacion" style="width:100%;">
-			<div id="margen" style="width:30%; height:1024px; float:left; display:block;"></div>
+			<div id="margen" style="width:30%; height:1024px; float:left; display:block;">
+				<img src="../res/img/tothebone2.jpg" alt="To the bone" height="740" width="600">
+			</div>
 			<div id="elegirContenido" style="width:60%; float:right; display:block; margin-top:50px; text-align:center;">
-				<div id="selectorDiv">
-					<select id="selector">
-					  <option value="Video">Trailer</option>
-					  <option value="Audio">Audio</option>
-					  <option value="Fotos">Personajes</option>
-					</select>
-				</div>
 				<div id="contenido">
-				
-				</div>
+		
+					<h2 align='center';><img src="../res/img/trailer.png" alt="Trailer"></h2>
+					<iframe width="420" height="315"
+						src="https://www.youtube.com/embed/gKRJjkFDOxo">
+					</iframe>
+					
+					<h2 align='center'><img src="../res/img/audio.png" alt="Audio"></h2>
+					<audio src="../res/audio/MeghanTrainor-KindlyCalmMeDown.m4a" preload="auto" controls></audio>
+					
+					</div>
 			</div>
 		</div>
 	</body>
-	<script type="text/javascript">
-		$('document').ready(function(){
-			var valor = document.getElementById("selector").value;
-			var imagen = new Image();
-			imagen.src = 'https://www.youtube.com/watch?v=gKRJjkFDOxo';
-			var videourl = 'https://www.youtube.com/watch?v=gKRJjkFDOxo'; 
-			var video = '<video width="1102" height="720" id="intro-video" autoplay loop src="' + videourl + '?t=' + '"></video>';
-			
-			if(valor == "Video") {
-				$('#contenido').append(video);
-				var src = document.getElementById("contenido");
-				src.append(video);
-			}
-		});
-	</script>
 </html>
