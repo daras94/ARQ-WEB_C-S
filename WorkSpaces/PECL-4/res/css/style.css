@@ -141,21 +141,24 @@ a:hover {
 }
 
 #map-box {
-  float: left;
-  background-color: #1c1c20;
-  border: 2px solid #16877A;
-  border-radius: 8px 50px 8px 150px;
-  -moz-border-radius: 8px 50px 8px 150px;
-  -webkit-border-radius: 8px 50px 8px 150px;
-  height: 620px;
-  width: 75%
+  	float: left;
+  	background-color: #1c1c20;
+  	border: 2px solid #16877A;
+  	border-radius: 8px 50px 8px 150px;
+  	-moz-border-radius: 8px 50px 8px 150px;
+  	-webkit-border-radius: 8px 50px 8px 150px;
+  	height: 600px;
+  	width: 74.5%;
+  	color: #fff;
+	font-family: cursive;
+	font-weight: bold;
 }
 
 #maps {
 	border-radius: 8px 50px 8px 150px;
 	-moz-border-radius: 8px 50px 8px 150px;
 	-webkit-border-radius: 8px 50px 8px 150px;
-	height: 616px;
+	height: 600px;
 }
 
 #floating-panel {
@@ -175,7 +178,7 @@ a:hover {
 #text-box {
 	float: right;
 	width: 24%;
-	min-height: 620px;
+	min-height: 600px;
 	border: 2px solid #16877A;
 	border-radius: 180px 7px 180px 8px;
 	-moz-border-radius: 180px 7px 180px 8px;
@@ -195,6 +198,19 @@ a:hover {
 	text-align: center;
 	font-size: 25px;
 	margin-top: 40px;
+}
+
+#select-plate {
+	float: left;
+	width: 300px;
+	margin: 15px;
+	margin-left: 100px;
+}
+
+#menu-select {
+	float: left;
+	width: 300px;
+	margin: 15px;
 }
 
 /*******************************************************************************
@@ -223,4 +239,79 @@ body > footer {
 	background: linear-gradient(to bottom, rgba(164,179,87,1) 0%, rgba(22,135,122,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a4b357', endColorstr='#16877a', GradientType=0 );
 	*/
+}
+
+/*******************************************************************************
+ * 								{ Other : }			     					   *
+ *******************************************************************************/
+input[type=text], input[type=password] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    box-sizing: border-box;
+    border: 2px solid #16877A;
+    border-radius: 180px 7px 200px 8px;
+    -moz-border-radius: 180px 7px 200px 8px;
+    -webkit-border-radius: 180px 7px 200px 8px;
+    background-color: #424242;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+input[type=button], button {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    border: 2px solid #16877A;
+    border-radius: 180px 50px 200px 50px;
+    -moz-border-radius: 180px 50px 200px 50px;
+    -webkit-border-radius: 180px 50px 200px 50px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+select {
+	padding: 10px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    box-sizing: border-box;
+    border: 2px solid #16877A;
+    border-radius: 180px 7px 200px 8px;
+    -moz-border-radius: 180px 7px 200px 8px;
+    -webkit-border-radius: 180px 7px 200px 8px;
+    background-color: #424242;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+	line-height:1;
+	outline:none
+	width:300px;
+}
+
+select#selecciones_platos,
+select#selecciones {
+	border: 2px solid #16877A;
+    border-radius: 80px 7px 200px 8px;
+    -moz-border-radius: 80px 7px 200px 8px;
+    -webkit-border-radius: 80px 7px 200px 8px;
+    width: 800px;
+    margin: 10px;
+}
+
+select:focus {
+    min-width: 150px;
+    width: auto;
+}    
+
+
+select:option {
+	color: #fff
 }
