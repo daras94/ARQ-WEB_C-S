@@ -1,0 +1,101 @@
+
+#c-box {
+  	float: left;
+  	width: 74.5%;
+  	color: #fff;
+	font-family: cursive;
+	font-weight: bold;
+}
+
+#box-cine {
+	background-color: #1c1c20;
+	margin: 25px;
+	margin-bottom: 50px;
+	height: 300px;
+	border: 1px solid #16877A;
+	border-radius: 80px 50px 200px 50px;
+    -moz-border-radius: 80px 50px 200px 50px;
+    -webkit-border-radius: 80px 50px 200px 50px;
+}
+
+.caratula, #drop {
+	float: left;
+	height: 250px;
+	width: 180px;
+	border: 1px solid #16877A;
+    border-radius: 80px 50px 200px 50px;
+    -moz-border-radius: 80px 50px 200px 50px;
+    -webkit-border-radius: 80px 50px 200px 50px;
+    background-color: #424242;
+}
+
+#drop, .caratula img {
+	height: 300px
+	margin-right: 5px;
+}
+
+#peli-info {
+	float: left;
+}
+
+iframe {
+	float: right;
+	border: 2px solid #16877A;
+    border-radius: 80px 50px 200px 50px;
+    -moz-border-radius: 80px 50px 200px 50px;
+    -webkit-border-radius: 80px 50px 200px 50px;
+ }
+
+ #pases {
+ 	height: 20px;
+ }
+
+ p.tag {
+ 	float: left;
+ 	margin: 5px;
+ 	padding: 10px;
+ 	border: 1px solid #16877A;
+ 	background-color: #16877A;
+ 	font-weight: bold;
+ 	font-family: fantasy;
+    border-radius: 80px 50px 100px 50px;
+    -moz-border-radius: 80px 50px 100px 50px;
+    -webkit-border-radius: 80px 50px 100px 50px;
+ }
+
+ #drag-box {
+	float: right;
+	width: 24%;
+	min-height: 600px;
+	border: 2px solid #16877A;
+	border-radius: 180px 7px 180px 8px;
+	-moz-border-radius: 180px 7px 180px 8px;
+	-webkit-border-radius: 180px 7px 180px 8px;
+	background-color: #1c1c20;
+	color: #fff;
+	font-family: cursive;
+	font-weight: bold;
+}
+
+#drag-box img {
+	height: 65%;
+	width: 65%;
+}
+
+#drag {
+	margin: 10px;
+	height: 200px;
+	overflow-x: auto;
+    border: 1px solid #16877A;
+	border-radius: 20px 7px 80px 8px;
+	-moz-border-radius: 20px 7px 80px 8px;
+	-webkit-border-radius: 20px 7px 80px 8px;
+	background-color: #2b2a2b;
+}
+
+#drag img {
+	margin: 10px;
+	height: 175px;
+	width: 115px;
+}
+

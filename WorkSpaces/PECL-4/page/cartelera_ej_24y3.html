@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bodega UAH</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="../res/css/style.css">
+		<link rel="stylesheet" type="text/css" href="../res/css/cartelera.css">
+		<script type="text/javascript" src="../res/script/jquery.js"></script>
+		<script type="text/javascript" src="../res/script/webStorageHtml5.js"></script>
+		<script type="text/javascript" src="../res/script/dragAndDrop.js"></script>
+	</head>
+	<body>
+		<div class="header">
+		  	<a href="#default" class="logo" alt="Home"></a>
+		  	<div class="header-right">
+			    <a class="active" href="../index.html">Home</a>
+			    <a href="./ejercicio1.html">Ejercicio 1</a>
+			    <a href="./ejercicio22.html">Ejercicio 2.2</a>
+			    <a href="./ejercicio2.3.html">Ejercicio 2.3</a>
+		  	</div>
+		</div>
+		<div id="cuerpo">
+			<div id="view-cine"></div>
+			<div id="drag-box">
+				<div class="text-item">
+					<div class="text-info" >Cartelera/Peliculas:</div><br>
+	                <img src="../res/img/icon/movie.png"/>
+	                <p style="padding: 15px; text-align: justify; font-size: 15px;">
+	                	Arastre la imagen de la pelicula al cudro de abajo para añadir la 
+	                	entrada a su carito y luego vaya a a la taquilla online para finalizar.
+	                </p>
+	                <div id="drag" ondrop="drop(event)" ondragover="allowDrop(event)">
+	                	
+	                </div>
+	                <form action="./taquilla_ej24y3.html" method="post">
+	                	 <input type="submit" value="Ir a la taquilla y pagar">
+	                </form>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var x = '';
+			// Check browser support
+			if (typeof(Storage) !== "undefined") {
+				var cartel = JSON.parse(localStorage.getItem('cartelera'));
+				x += '<div id="c-box">';
+			    for (var i in cartel.peliculas) {
+			    	var aux = cartel.peliculas[i];
+			    	x      += '<div id="box-cine">';
+			    	x      += '<div id="drop" ondrop="drop(event)" ondragover="allowDrop(event)">';
+			    	x      += '<img class="caratula" id="' + aux.idcine + '" src="' + aux.caratula + '" alt="'+ aux.titulo +'" draggable="true" ondragstart="drag(event)">';
+			    	x      += '</div>';
+			    	x      += '<div id="peli-info">';
+			    	x      += '<ul>';
+			    	x      += '<li><h2>' + aux.titulo + '</h2></li>';
+			    	x      += '<ul>';
+			    	x      += '<li><p id="dur-info"><b>Duracion  : </b>' + aux.duracion + ' mim</p></li>';
+			    	x      += '<li><p id="dir-info"><b>Direccion : </b>' + aux.director + '</p></li>';
+			    	x      += '<li><p id="rep-info"><b>Reparto   : </b>' + aux.reparto  + '</p></li>';
+			    	x      += '</ul>';
+			    	x      += '</ul>';
+			    	x      += '<div id="pases">'
+			    	for (var j in aux.pases) {
+			    		x  += '<p class="tag">' + aux.pases[j] + '</p>';
+			    	}
+			    	x      += '</div>';
+			    	x      += '</div>';
+			    	x      += '<iframe width="600" height="325" src="https://www.youtube.com/embed/' + aux.trailer + '"></iframe>';
+			    	x      += '</div>';
+			    }
+			    x += '</div>';
+			    document.getElementById("view-cine").innerHTML = x;
+			} else {
+			    document.getElementById("view-cine").innerHTML = "Sorry, your browser does not support Web Storage...";
+			}
+		</script>
+	</body>
+	<footer> 
+		<a href="aviso-legal.html">Aviso legal</a> | 
+		<a href="privacidad.html">Provacidad</a>  | 
+		<a href="contactar.html">Contactar</a> | 
+		Copyright &copy; 2018-2019 
+	</footer>
+</html>

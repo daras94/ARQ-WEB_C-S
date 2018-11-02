@@ -259,7 +259,7 @@ input[type=text], input[type=password] {
     font-weight: bold;
 }
 
-input[type=button], button {
+input[type=submit], input[type=button], button {
     background-color: #4CAF50;
     color: white;
     font-size: 15px;
