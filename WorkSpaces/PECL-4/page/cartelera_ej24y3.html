@@ -26,13 +26,16 @@
 					<div class="text-info" >Cartelera/Peliculas:</div><br>
 	                <img src="../res/img/icon/movie.png"/>
 	                <p style="padding: 15px; text-align: justify; font-size: 15px;">
-	                	Arastre la imagen de la pelicula al cudro de abajo para añadir la 
-	                	entrada a su carito y luego vaya a a la taquilla online para finalizar.
+	                	Arastre la imagen de la pelicula al cuadro de abajo para añadir la 
+	                	entrada a su carito y para eleiminar una entrada arastre la caratula
+	                	de la pelicula hacia su posicion original y luego vaya a a la taquilla
+	                	online para finalizar.
 	                </p>
-	                <div id="drag" ondrop="drop(event)" ondragover="allowDrop(event)">
+	                <div id="drag" ondrop="dropTicket(event)" ondragover="allowDrop(event)">
 	                	
 	                </div>
-	                <form action="./taquilla_ej24y3.html" method="post">
+	                <p id="producto"></p>
+	                <form action="./carrito_ej24y3.html" method="post">
 	                	 <input type="submit" value="Ir a la taquilla y pagar">
 	                </form>
 				</div>
@@ -42,12 +45,12 @@
 			var x = '';
 			// Check browser support
 			if (typeof(Storage) !== "undefined") {
-				var cartel = JSON.parse(localStorage.getItem('cartelera'));
+				var cartel = JSON.parse(localStorage.getItem('bbdd'));
 				x += '<div id="c-box">';
 			    for (var i in cartel.peliculas) {
 			    	var aux = cartel.peliculas[i];
 			    	x      += '<div id="box-cine">';
-			    	x      += '<div id="drop" ondrop="drop(event)" ondragover="allowDrop(event)">';
+			    	x      += '<div id="drop" ondrop="dropTicket(event)" ondragover="allowDrop(event)">';
 			    	x      += '<img class="caratula" id="' + aux.idcine + '" src="' + aux.caratula + '" alt="'+ aux.titulo +'" draggable="true" ondragstart="drag(event)">';
 			    	x      += '</div>';
 			    	x      += '<div id="peli-info">';

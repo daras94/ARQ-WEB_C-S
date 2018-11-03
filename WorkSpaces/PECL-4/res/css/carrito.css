@@ -1,0 +1,61 @@
+@import url("./cartelera.css");
+@import url("./restaurant.css");
+
+
+ #pay-box {
+	float: right;
+	width: 24%;
+	min-height: 600px;
+	border: 2px solid #16877A;
+	border-radius: 180px 7px 180px 8px;
+	-moz-border-radius: 180px 7px 180px 8px;
+	-webkit-border-radius: 180px 7px 180px 8px;
+	background-color: #1c1c20;
+	color: #fff;
+	font-family: cursive;
+	font-weight: bold;
+}
+
+#pay-box img {
+	height: 65%;
+	width: 65%;
+}
+
+#c-box {
+	float: left;
+	width: 75%;
+	color: #fff;
+	max-height: 250px;
+	margin-top: 15px;
+	font-family: cursive;
+  	font-weight: bold;
+	/*border: 2px solid #16877A;
+	border-radius: 8px 7px 150px 8px;
+	-moz-border-radius: 8px 7px 150px 8px;
+	-webkit-border-radius: 8px 7px 150px 8px;
+	background-color: #1c1c20;*/
+}
+
+h1 {
+	border-bottom: 2px solid #16877A;
+}
+
+div.error {
+  margin: 30px;
+  background-color: #fff;
+  border: 1px solid black;
+  opacity: 0.4;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+div.error p {
+	text-align: center;
+  	margin: 2%;
+  	font-weight: bold;
+  	color: #000;
+}
+
+div.error a {
+  	color: #16877A;
+  	text-decoration: underline;
+}

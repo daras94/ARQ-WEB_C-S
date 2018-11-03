@@ -1,5 +1,5 @@
 
-#c-box {
+#m-box {
   	float: left;
   	width: 74.5%;
   	color: #fff;
@@ -7,7 +7,7 @@
 	font-weight: bold;
 }
 
-#box-cine {
+#box-menu {
 	background-color: #1c1c20;
 	margin: 25px;
 	margin-bottom: 50px;
@@ -35,33 +35,57 @@
 	margin-right: 5px;
 }
 
-#peli-info {
-	float: left;
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 40%;
+    margin-top: -25px;
+    height: 200px;
 }
 
-iframe {
-	float: right;
-	border: 2px solid #16877A;
-    border-radius: 80px 50px 200px 50px;
-    -moz-border-radius: 80px 50px 200px 50px;
-    -webkit-border-radius: 80px 50px 200px 50px;
- }
+.row:after {
+	column-count: 2;
+    content: "";
+    display: table;
+    clear: both;
+    margin-left: 150px;
+}
 
- #pases {
+#box-menu > h1 {
+	text-align: center;
+	margin-left: 50px;
+	margin-top: -2px;
+	border-bottom: 1px solid #16877A;
+}
+
+#box-menu > input[type=text] {
+	text-align: center;
+	font-weight: bold;
+}
+
+#box-menu > #precio {
+	float: right;
+	margin-top: -15px;
+	text-align: center;
+}
+
+ #postres {
+ 	float: left;
  	height: 20px;
  }
 
-#box-cine p.tag {
+ #box-menu p.tag {
+ 	margin: 15px;
  	float: left;
  	margin: 5px;
- 	padding: 10px;
- 	border: 1px solid #16877A;
+ 	padding: 2px;
+ 	/*border: 1px solid #16877A;
  	background-color: #16877A;
  	font-weight: bold;
  	font-family: fantasy;
     border-radius: 80px 50px 100px 50px;
     -moz-border-radius: 80px 50px 100px 50px;
-    -webkit-border-radius: 80px 50px 100px 50px;
+    -webkit-border-radius: 80px 50px 100px 50px;*/
  }
 
  #drag-box {

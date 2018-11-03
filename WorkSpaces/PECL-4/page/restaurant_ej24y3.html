@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bodega UAH</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="../res/css/style.css">
+		<link rel="stylesheet" type="text/css" href="../res/css/restaurant.css">
+		<script type="text/javascript" src="../res/script/jquery.js"></script>
+		<script type="text/javascript" src="../res/script/webStorageHtml5.js"></script>
+		<script type="text/javascript" src="../res/script/dragAndDrop.js"></script>
+	</head>
+	<body>
+		<div class="header">
+		  	<a href="#default" class="logo" alt="Home"></a>
+		  	<div class="header-right">
+			    <a class="active" href="../index.html">Home</a>
+			    <a href="./ejercicio1.html">Ejercicio 1</a>
+			    <a href="./ejercicio22.html">Ejercicio 2.2</a>
+			    <a href="./ejercicio2.3.html">Ejercicio 2.3</a>
+		  	</div>
+		</div>
+		<div id="cuerpo">
+			<div id="view-menu"></div>
+			<div id="drag-box">
+				<div class="text-item">
+					<div class="text-info" >Menus restaurantes</div><br>
+	                <img src="../res/img/icon/restaurant.png"/>
+	                <p style="padding: 15px; text-align: justify; font-size: 15px;">
+	                	Arraster el icono del menu al cuadro de abo para añadir el menu
+	                	a su compra de cine y menu para eliminar el menu buelva arastralo 
+	                	desde el udro de abo asta su posicion inicial y pra finalizar pulse 
+	                	en Ir a taquilla y pagar.
+	                </p>
+	                <div id="drag" ondrop="dropMenu(event)" ondragover="allowDrop(event)">
+	                	<!-- Area de drag an drop para el carrito -->
+	             	</div>
+	             	<p id="producto"></p>
+	                <form action="./carrito_ej24y3.html" method="post">
+	                	 <input type="submit" value="Ir a la taquilla y pagar">
+	                </form>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var x = '';
+			// Check browser support
+			if (typeof(Storage) !== "undefined") {
+				var m = JSON.parse(localStorage.getItem('bbdd'));
+				x += '<div id="m-box">';
+			    for (var i in m.menus) {
+			    	var aux = m.menus[i];
+			    	x      += '<div id="box-menu">';
+			    	x      += '<div id="drop" ondrop="dropMenu(event)" ondragover="allowDrop(event)">';
+					x      += '<img class="caratula" id="' + aux.idmenu + '" src="' + aux.icon + '" alt="' + aux.titulo + '" draggable="true" ondragstart="drag(event)">';
+					x      += '</div>'
+					x	   += '<h1>' + aux.titulo + '</h1>';
+					x	   += '<div class="column">';
+					x	   += '<ul>';
+					x	   += '<li><h3><b>Primeros Platos:</b></h3>';
+					x	   += '<ul>';
+					for (var j = aux.primeros.length - 1; j >= 0; j--) {
+						x  += '<li>' + aux.primeros[j] + '</li>';
+					}
+					x	   += '</ul>';
+					x      += '</li>';
+					x	   += '<ul>';
+					x      += '</div>';
+					x	   += '<div class="column">';
+					x	   += '<ul>';
+					x	   += '<li><h3><b>Segundos Platos:</b></h3>';
+					x	   += '<ul>';
+					for (var j = aux.segundos.length - 1; j >= 0; j--) {
+						x  += '<li>' + aux.segundos[j] + '</li>';
+					}
+					x	   += '</ul>';
+					x      += '</li>';
+					x	   += '<ul>';
+					x      += '</div>';
+					x      += '<div id="postres"><p class="tag"><b>Postres:</b></p>'
+					for (var j = aux.postres.length - 1; j >= 0; j--) {
+						x  += '<p class="tag">' + aux.postres[j] + ',</p>';
+					}
+					x      += '</div>';
+					x      += '<p id="precio"><input type="text" value="' + aux.precio + '€" id="a_pagar"></p>';
+			    	x      += '</div>';
+			    }
+			    x += '</div>';
+			    document.getElementById("view-menu").innerHTML = x;
+			} else {
+			    document.getElementById("view-menu").innerHTML = "Sorry, your browser does not support Web Storage...";
+			}
+		</script>
+	</body>
+	<footer> 
+		<a href="aviso-legal.html">Aviso legal</a> | 
+		<a href="privacidad.html">Provacidad</a>  | 
+		<a href="contactar.html">Contactar</a> | 
+		Copyright &copy; 2018-2019 
+	</footer>
+</html>

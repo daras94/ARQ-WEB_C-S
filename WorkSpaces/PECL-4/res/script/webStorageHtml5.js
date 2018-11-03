@@ -1,4 +1,4 @@
-var cartelera = {
+var bd_dat = {
 	peliculas : [
 		{
 			idcine   : "C-01",	   
@@ -30,11 +30,41 @@ var cartelera = {
 			reparto  : ["Keira Knightley", "Mackenzie Foy", "Helen Mirren"],
 			pases    : ["16:00", "18:10", "20:00", "20:35"]
 		}
+	],
+	menus : [
+		{
+			idmenu   : "M-01",
+			titulo   : "Menu del Dia",
+			icon	 : "../res/img/menus/M-01.png",
+			precio   : 20,
+			primeros : ["Pulpo a la feira", "Entrecot", "Ensalada"],
+			segundos : ["Mariscada", "Pimientos de padron", "Churasco"],
+			postres  : ["Flan", "Macedonia", "Pudin", "Cafe o Infusion"]
+		},
+		{
+			idmenu   : "M-03",
+			titulo   : "Menu Especial",
+			icon	 : "../res/img/menus/M-03.png",
+			precio   : 80,
+			primeros : ["Suflet", "Rodaballo confitado con sofrito de tomate"],
+			segundos : ["Rape con ragout de verduras y manitas de cerdo", " Pularda asada con ciruelas y piñones"],
+			postres  : ["Flan", "Macedonia", "Pudin", "Cafe o Infusion"]
+		},
+		{
+			idmenu   : "M-02",
+			titulo   : "Menu Infantil",
+			icon	 : "../res/img/menus/M-02.png",
+			precio   : 8,
+			primeros : ["Pizza", "Macarones con tomate", "Espaquetis"],
+			segundos : ["Hamburguesa", "Filete de pollo", "Arroz a la Cubana"],
+			postres  : ["Elados", "Fantasmitos", "Tarta Chocolate"]
+		},
 	]
+
 };
 // Check browser support
 if (typeof(Storage) !== "undefined") {
-    localStorage.setItem("cartelera", JSON.stringify(cartelera));
+    localStorage.setItem("bbdd", JSON.stringify(bd_dat));
 } else {
     alert("Sorry, your browser does not support Web Storage...");
 }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bodega UAH</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="../res/css/carrito.css">
+		<link rel="stylesheet" type="text/css" href="../res/css/style.css">
+		<script type="text/javascript" src="../res/script/carrito.js"></script>
+	</head>
+	<body onload="loadCarrito()">
+		<div class="header">
+		  	<a href="#default" class="logo" alt="Home"></a>
+		  	<div class="header-right">
+			    <a class="active" href="../index.html">Home</a>
+			    <a href="./ejercicio1.html">Ejercicio 1</a>
+			    <a href="./ejercicio22.html">Ejercicio 2.2</a>
+			    <a href="./ejercicio2.3.html">Ejercicio 2.3</a>
+		  	</div>
+		</div>
+		<div id="cuerpo">
+			<div id="view-carrito"></div>
+			<div id="pay-box">
+				<div class="text-item">
+					<div class="text-info" >Sus compras:</div><br>
+					<img src="../res/img/icon/order.png"/>
+	                <p style="padding: 15px; text-align: justify; font-size: 15px;">
+	                	Aqui se muestra todos los productos que usted ha ido añadiendo al
+						carrito de la compra.
+	                </p>
+	                Total:<input id="precio-2" type="text" value="0" id="a_pagar"> €
+    				<input type="button" value="Pagar" onclick="pagar()">
+				</div>
+			</div>
+		</div>
+		<footer> 
+			<a href="aviso-legal.html">Aviso legal</a> | 
+			<a href="privacidad.html">Provacidad</a>  | 
+			<a href="contactar.html">Contactar</a> | 
+			Copyright &copy; 2018-2019 
+		</footer>
+	</body>
+</html>
