@@ -97,3 +97,12 @@ local.properties
 ### macOS ###
 # General
 .DS_Store
+/WorkSpaces/PECL-5/PECL-4_EJ_21_AccesoADatos/nbproject/private/
+/WorkSpaces/PECL-5/PECL-4_EJ_21_AccesoADatos/build/
+/WorkSpaces/PECL-5/PECL-4_EJ_21_AccesoADatos/dist/
+/WorkSpaces/PECL-5/EJE2.1_AcesoADatos/nbproject/private/
+/WorkSpaces/PECL-5/EJE2.1_AcesoADatos/build/
+/WorkSpaces/PECL-5/EJE2.1_AcesoADatos/dist/
+/WorkSpaces/PECL-5/Eje_2.3_sessiones/nbproject/private/
+/WorkSpaces/PECL-5/Eje_2.3_sessiones/build/
+/WorkSpaces/PECL-5/Eje_2.3_sessiones/dist/
