@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>PL6</title>
+<style type="text/css">
+	
+	h1{
+		color: darkblue;
+		font: italic;
+		font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+	}
+	
+	form{
+		background-color: burlywood;
+		padding: 10px;
+		width: 40%;
+		border-color: chocolate;
+	}
+	
+	body {
+		background-color: #FCFB98;
+		
+	}
+	
+	.boton {
+		padding: 10px;
+	}
+	
+	
+</style>
+</head>
+
+	
+	
+<body>
+    <center> <H1><img style="width: 2%" src="https://image.flaticon.com/icons/svg/37/37425.svg" alt=""/> Insercción de circuitos</H1>
+
+    <form action=Insertar_Circuito method=POST>
+        <table border="0">
+            <tbody>
+                <tr>
+                    <td>Nombre del Circuito:</td>
+                    <td><input type="text" name="nombreCircuito" required></td>
+                </tr>
+
+                <tr>
+                    <td>Ciudad:</td>
+                    <td><input type="text" name="ciudad" required></td>
+                </tr>
+
+                <tr>
+                    <td>Pais:</td>
+                    <td><input type="text" name="pais" required></td>
+                </tr>
+
+                <tr>
+                    <td>Numero de Vueltas:</td>
+                    <td><input type="number" name="numVueltas" required min="40" max="80"></td>
+                </tr>
+
+                <tr>
+                    <td>Longitud de vueltas:</td>
+                    <td><input type="number" name="longVueltas" required min="3000" max="9000"></td>
+                </tr>
+
+                <tr>
+                    <td>Numero de Curvas por vuelta:</td>
+                    <td><input type="number" name="numCurvas" required min="6" max="20"></td>
+                </tr>
+
+            </tbody>
+        </table>
+
+
+        <br>
+        <input class="boton" type="submit" value="Insertar Nuevo circuito">
+    </form> 
+
+     <H1><img style="width: 2%" src="https://image.flaticon.com/icons/svg/37/37425.svg" alt=""/>Insercción de coches</H1>
+		 
+		<form action=Insertar_Coche method=POST>
+
+
+        <table border="0">
+            <tbody>
+                <tr>
+                    <td>Nombre del Coche:</td>
+                    <td><input type="text" name="nomCoche" required></td>
+                </tr>
+
+                <tr>
+                    <td>Ganancia por curva:</td>
+                    <td><input type="number" name="gananciaPotencia" required min="4" max="10"></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <br>
+        <input class="boton" type="submit" value="Insertar Nuevo Coche">
+    </form>
+
+    <H1><img style="width: 2%" src="https://image.flaticon.com/icons/svg/37/37425.svg" alt=""/>Cálculo de la ganancia</H1>
+		
+		
+		<form action=Calculo_Ganancia method=POST>
+
+
+        <table border="0">
+            <tbody>
+                <tr>
+                    <td>Nombre del Coche:</td>
+                    <td><input type="text" name="nomCoche" required></td>
+                </tr>
+
+                <tr>
+                    <td>Circuito:</td>
+                    <td><input type="text" name="nombreCircuito" required></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <br>
+        <input class="boton" type="submit" value="Cálculo de la ganancia">
+    </form>
+		
+		
+</center>
+</body>
+</html>
