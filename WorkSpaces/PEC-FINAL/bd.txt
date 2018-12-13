@@ -81,7 +81,7 @@ CREATE TABLE public.usuarios
     rango text COLLATE pg_catalog."default" NOT NULL,
     compras_totales integer,
     "DNI" text COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT usuarios_pkey PRIMARY KEY (nombre)
+    CONSTRAINT usuarios_pkey PRIMARY KEY ("DNI")
 )
 WITH (
     OIDS = FALSE
