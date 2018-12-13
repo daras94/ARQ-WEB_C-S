@@ -12,22 +12,22 @@ CREATE DATABASE "PECLWeb"
     CONNECTION LIMIT = -1;
 
 
--- Table: public.aeropuestos
+-- Table: public.aeropuertos
 
--- DROP TABLE public.aeropuestos;
+-- DROP TABLE public.aeropuertos;
 
-CREATE TABLE public.aeropuestos
+CREATE TABLE public.aeropuertos
 (
     nombre text COLLATE pg_catalog."default" NOT NULL,
     tasas real NOT NULL,
-    CONSTRAINT aeropuestos_pkey PRIMARY KEY (nombre)
+    CONSTRAINT aeropuertos_pkey PRIMARY KEY (nombre)
 )
 WITH (
     OIDS = FALSE
 )
 TABLESPACE pg_default;
 
-ALTER TABLE public.aeropuestos
+ALTER TABLE public.aeropuertos
     OWNER to postgres;
 
 -- Table: public.compras
