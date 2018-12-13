@@ -1,0 +1,94 @@
+-- Database: PECLWeb
+
+-- DROP DATABASE "PECLWeb";
+
+CREATE DATABASE "PECLWeb"
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Spanish_Spain.1252'
+    LC_CTYPE = 'Spanish_Spain.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+
+-- Table: public.aeropuestos
+
+-- DROP TABLE public.aeropuestos;
+
+CREATE TABLE public.aeropuestos
+(
+    nombre text COLLATE pg_catalog."default" NOT NULL,
+    tasas real NOT NULL,
+    CONSTRAINT aeropuestos_pkey PRIMARY KEY (nombre)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.aeropuestos
+    OWNER to postgres;
+
+-- Table: public.compras
+
+-- DROP TABLE public.compras;
+
+CREATE TABLE public.compras
+(
+    id_usuario text COLLATE pg_catalog."default" NOT NULL,
+    id_compra text COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT compras_pkey PRIMARY KEY (id_compra, id_usuario)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.compras
+    OWNER to postgres;
+
+-- Table: public.trayecto
+
+-- DROP TABLE public.trayecto;
+
+CREATE TABLE public.trayecto
+(
+    aer_origen text COLLATE pg_catalog."default" NOT NULL,
+    aer_destino text COLLATE pg_catalog."default" NOT NULL,
+    id_viaje text COLLATE pg_catalog."default" NOT NULL,
+    precio real NOT NULL,
+    fecha date,
+    CONSTRAINT trayecto_pkey PRIMARY KEY (id_viaje)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.trayecto
+    OWNER to postgres;
+
+
+-- Table: public.usuarios
+
+-- DROP TABLE public.usuarios;
+
+CREATE TABLE public.usuarios
+(
+    nombre text COLLATE pg_catalog."default" NOT NULL,
+    contrasena text COLLATE pg_catalog."default" NOT NULL,
+    rango text COLLATE pg_catalog."default" NOT NULL,
+    compras_totales integer,
+    CONSTRAINT usuarios_pkey PRIMARY KEY (nombre)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.usuarios
+    OWNER to postgres;
+
+COMMENT ON COLUMN public.usuarios.compras_totales
+    IS 'Compras totales para ver si hay que aplicar el descuento';
