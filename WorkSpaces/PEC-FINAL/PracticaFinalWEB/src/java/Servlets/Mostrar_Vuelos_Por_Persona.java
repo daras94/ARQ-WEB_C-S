@@ -40,7 +40,7 @@ public class Mostrar_Vuelos_Por_Persona extends HttpServlet {
             HttpSession s = peticion.getSession(true);
             bd.ModeloDatos();
             s.setAttribute("consulta", bd.getResultado());
-            respuesta.sendRedirect(respuesta.encodeRedirectURL("listado_vuelos.jsp"));
+            respuesta.sendRedirect(respuesta.encodeRedirectURL("listado_numero_vuelos_por_persona.jsp"));
         } catch (Exception e) {
             // Si ocurre algún error
         }
