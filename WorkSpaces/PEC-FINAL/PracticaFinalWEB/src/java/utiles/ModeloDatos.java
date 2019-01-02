@@ -53,6 +53,18 @@ public class ModeloDatos {
         }
 
     }
+    
+    public void obtenerViajesPorPersona()
+    {
+    	try {
+            mandato = conexion.createStatement();
+            resultado = mandato.executeQuery("SELECT compras_totales FROM public.usuarios WHERE nombre=?;");
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloDatos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            System.out.println("Ha ocurrido un error al encontrar el número de vuelos de este usuario.");
+        }
+    }
 
     public void abrirConexion() {
 
