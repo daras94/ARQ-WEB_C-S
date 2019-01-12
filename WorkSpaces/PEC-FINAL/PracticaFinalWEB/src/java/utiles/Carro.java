@@ -27,5 +27,9 @@ public class Carro {
         return vuelos.size();
     }
     
+    public void anadirVueloCesta(String origen, String destino, float precio){
+        Vuelo v = new Vuelo(origen,destino,precio);
+        vuelos.add(v);
+    }
     
 }

@@ -31,12 +31,12 @@
                         out.println("<p>Productos:</p>");
                         out.println("<table>");
                         for(int i=0; i< num_productos; i++){
-                            out.println("<tr>");
+                            out.println("<a href=\"ServletCompraCesta?cad=" + i + "\" target=\"_blank\">" + "<tr>");
                             Vuelo aux = carro.getVuelos().get(i);
                             out.println("<th>"+aux.getOrigen()+"</th>");
                             out.println("<th>"+aux.getDestino()+"</th>");
                             out.println("<th>"+aux.getPrecio()+"</th>");
-                            out.println("</tr>");
+                            out.println("</tr></a>");
                         }
                         out.println("</table>");
                     }
