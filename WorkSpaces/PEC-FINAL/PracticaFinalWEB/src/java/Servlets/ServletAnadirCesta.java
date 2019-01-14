@@ -33,15 +33,14 @@ import utiles.*;
 public class ServletAnadirCesta extends HttpServlet {
 
     public void service(HttpServletRequest peticion, HttpServletResponse respuesta) throws ServletException, IOException {
-
         HttpSession session = peticion.getSession();
         Carro carro = (Carro) session.getAttribute("carro");
         String aer_origen = peticion.getParameter("origen");
         String aer_destino = peticion.getParameter("dest");
         String id = peticion.getParameter("id");
-        float precio = Float.parseFloat(peticion.getParameter("precio"));
+        String p = peticion.getParameter("precio");
+        float precio = Float.parseFloat(p);
         String fecha = peticion.getParameter("fecha");
-        
         carro.anadirVueloCesta(aer_origen,aer_destino,precio,fecha);
     }
     
