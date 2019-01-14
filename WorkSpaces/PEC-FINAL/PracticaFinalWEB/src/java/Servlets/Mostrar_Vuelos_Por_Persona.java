@@ -17,7 +17,7 @@ import utiles.ModeloDatos;
 
 /**
  *
- * @author RMGSB
+ * @author AngelaMorenoPrado
  */
 public class Mostrar_Vuelos_Por_Persona extends HttpServlet {
 
