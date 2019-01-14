@@ -9,8 +9,12 @@
         <servlet-class>Servlets.ServletCompraCesta</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ServletCompraCestaEntera</servlet-name>
-        <servlet-class>Servlets.ServletCompraCestaEntera</servlet-class>
+        <servlet-name>MostrarBilletes</servlet-name>
+        <servlet-class>Servlets.MostrarBilletes</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletAnadirCesta</servlet-name>
+        <servlet-class>Servlets.ServletAnadirCesta</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Mostrar_Vuelos</servlet-name>
@@ -21,8 +25,12 @@
         <url-pattern>/ServletCompraCesta</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ServletCompraCestaEntera</servlet-name>
-        <url-pattern>/ServletCompraCestaEntera</url-pattern>
+        <servlet-name>MostrarBilletes</servlet-name>
+        <url-pattern>/MostrarBilletes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAnadirCesta</servlet-name>
+        <url-pattern>/ServletAnadirCesta</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

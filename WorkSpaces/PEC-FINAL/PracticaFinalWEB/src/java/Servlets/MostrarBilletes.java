@@ -28,14 +28,13 @@ public class MostrarBilletes extends HttpServlet {
     }
     
     public void service(HttpServletRequest peticion, HttpServletResponse respuesta) throws ServletException, IOException {
-
         try {
             HttpSession s = peticion.getSession(true);
             //Hay que coger la fecha de ida, la fecha de vuelta, el aeropuerto origen y el aeropuerto destino
-            String f_ida=""; //coger de la pagina inicial
-            String f_vuelta="";
-            String aer_origen="";
-            String aer_destino="";
+            String f_ida="2019/01/15"; //coger de la pagina inicial
+            String f_vuelta="2019/01/30";
+            String aer_origen="Madrid";
+            String aer_destino="Barcelona";
             bd.obtenerBilletes(aer_origen,aer_destino,f_ida,f_vuelta); //pasar por parámetro lo mencionado arriba 
             s.setAttribute("consulta", bd.getResultado());
             respuesta.sendRedirect(respuesta.encodeRedirectURL("listado_billetes.jsp"));
