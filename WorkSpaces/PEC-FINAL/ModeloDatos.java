@@ -53,6 +53,39 @@ public class ModeloDatos {
         }
 
     }
+    
+    public void ObtenerVuelosPorPersona(String dni, int dineroVuelo) {
+    
+    	String DNI = dni;
+    	int DINEROVUELO = dineroVuelo;
+    	
+        try {
+      		String sql = "SELECT compras_totales FROM public.usuarios WHERE DNI=?;";
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setString(1, DNI);
+            ResultSet rs = stmt.executeQuery();
+            
+            while(rs.next())
+            {
+            	int numeroViajes = rs.getInt("compras_totales");
+            }
+            
+            if(numeroViajes%3 = 0)
+            {
+            	dineroVuelo = dineroVuelo/2;
+            }
+            else
+            {
+            	dineroVuelo = dineroVuelo;
+           	}
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloDatos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            System.out.println("Ha ocurrido un error al encontrar los vuelos ");
+        }
+
+    }
 
     public void abrirConexion() {
 
@@ -68,6 +101,7 @@ public class ModeloDatos {
         }
 
     }
+    
 
     public void cerrarConexion() {
         try {
