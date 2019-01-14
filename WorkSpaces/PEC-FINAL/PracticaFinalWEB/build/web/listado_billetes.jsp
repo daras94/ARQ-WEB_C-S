@@ -20,13 +20,15 @@
             out.println("<table>");
             
             while(r.next()){
-                out.println("<a href=\"ServletAnadirCesta?origen=" + r.getString(0) +"dest=" + r.getString(1)+ "id=" + r.getString(2)+"precio=" + r.getString(3)+"fecha=" + r.getString(4)+ "\" target=\"_blank\">" + "<tr>");
-                out.println("<th>"+r.getString(0)+"</th>");
+                out.println("<tr>");
                 out.println("<th>"+r.getString(1)+"</th>");
                 out.println("<th>"+r.getString(2)+"</th>");
                 out.println("<th>"+r.getString(3)+"</th>");
                 out.println("<th>"+r.getString(4)+"</th>");
-                out.println("</tr></a>");
+                out.println("<th>"+r.getString(5)+"</th>");
+                out.println("<th>"+r.getString(6)+"</th>");
+                out.println("<th><a class=enlace href=\"ServletAnadirCesta?origen=" + r.getString(1) +"&dest=" + r.getString(2)+ "&id=" + r.getString(3)+"&precio=" + r.getString(4)+"&fecha=" + r.getString(5)+ "\" target=\"_blank\">Comprar</a></th>");
+                out.println("</tr>");
             }
             
             out.println("</table>");
