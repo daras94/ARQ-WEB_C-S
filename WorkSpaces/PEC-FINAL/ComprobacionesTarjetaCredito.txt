@@ -30,3 +30,4 @@ CREATE TRIGGER comprobarTarjeta
   ON public.usuarios
   FOR EACH ROW
   EXECUTE PROCEDURE public.comprobarTarjeta();
+  
