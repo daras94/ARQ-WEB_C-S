@@ -39,6 +39,8 @@
                             out.println("</tr></a>");
                         }
                         out.println("</table>");
+                        
+                        out.println("<a href=\"ServletCompraCestaEntera\">Comprar todos los elementos de la cesta</a>");
                     }
 
                 }

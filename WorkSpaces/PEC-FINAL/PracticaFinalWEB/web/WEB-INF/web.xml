@@ -8,6 +8,10 @@
         <servlet-name>ServletCompraCesta</servlet-name>
         <servlet-class>Servlets.ServletCompraCesta</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletCompraCestaEntera</servlet-name>
+        <servlet-class>Servlets.ServletCompraCestaEntera</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Mostrar_Vuelos</servlet-name>
         <url-pattern>/Mostrar_Vuelos</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>ServletCompraCesta</servlet-name>
         <url-pattern>/ServletCompraCesta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCompraCestaEntera</servlet-name>
+        <url-pattern>/ServletCompraCestaEntera</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
