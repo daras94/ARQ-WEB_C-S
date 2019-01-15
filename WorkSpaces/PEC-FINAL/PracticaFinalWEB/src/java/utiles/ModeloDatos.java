@@ -61,7 +61,7 @@ public class ModeloDatos {
             dineroVuelo = dineroVuelo;
             resultado = mandato.executeQuery("SELECT compras_totales FROM public.usuarios WHERE DNI="+DNI+";");
             
-            if(resultado % 3 == 0)
+            if(resultado % 2 == 0)
             {
             	dineroVuelo = dineroVuelo / 2;
             }
