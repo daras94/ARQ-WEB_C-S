@@ -51,6 +51,40 @@ public class ModeloDatos {
         } catch (Exception e) {
             System.out.println("Ha ocurrido un error al encontrar los vuelos ");
         }
+    }
+    
+    public void ObtenerVuelosPorPersona(String DNI, int dineroVuelo) {
+    try {
+            mandato = conexion.createStatement();
+            DNI = DNI;
+            
+            dineroVuelo = dineroVuelo;
+            resultado = mandato.executeQuery("SELECT compras_totales FROM public.usuarios WHERE DNI="+DNI+";");
+            
+            if(resultado % 3 == 0)
+            {
+            	dineroVuelo = dineroVuelo / 2;
+            }
+            else
+            {
+            	dineroVuelo = dineroVuelo;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloDatos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            System.out.println("Ha ocurrido un error al encontrar los vuelos ");
+        }
+    }
+    
+    public void obtenerEstadisticas() {
+        try {
+            mandato = conexion.createStatement();
+            resultado = mandato.executeQuery("SELECT * FROM public.compras;");
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloDatos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            System.out.println("Ha ocurrido un error al encontrar los vuelos ");
+        }
 
     }
 
