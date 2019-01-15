@@ -56,6 +56,7 @@ public class ModeloDatos {
     public void ObtenerVuelosPorPersona(String DNI, int dineroVuelo) {
         try {
             mandato = conexion.createStatement();
+<<<<<<< HEAD
             DNI = DNI;
             
             dineroVuelo = dineroVuelo;
@@ -65,11 +66,23 @@ public class ModeloDatos {
                 dineroVuelo = dineroVuelo / 2;
             } else {
                 dineroVuelo = dineroVuelo;
+=======
+            resultado = mandato.executeQuery("SELECT compras_totales FROM public.usuarios WHERE DNI="+DNI+";");
+            
+            
+            if(resultado % 2 == 0)
+            {
+            	dineroVuelo = dineroVuelo / 2;
+            }
+            else
+            {
+            	dineroVuelo = dineroVuelo;
+>>>>>>> 57ed510cd81dc821069ddc2ddebd95561a39b684
             }
         } catch (SQLException ex) {
             Logger.getLogger(ModeloDatos.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception e) {
-            System.out.println("Ha ocurrido un error al encontrar los vuelos ");
+            System.out.println("Ha ocurrido un error al encontrar los vuelos por persona");
         }
     }
     
@@ -80,7 +93,7 @@ public class ModeloDatos {
         } catch (SQLException ex) {
             Logger.getLogger(ModeloDatos.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception e) {
-            System.out.println("Ha ocurrido un error al encontrar los vuelos ");
+            System.out.println("Ha ocurrido un error al encontrar las compras ");
         }
         
     }
