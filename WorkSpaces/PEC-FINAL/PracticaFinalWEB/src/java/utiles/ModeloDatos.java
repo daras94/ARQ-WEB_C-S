@@ -57,6 +57,7 @@ public class ModeloDatos {
     try {
             mandato = conexion.createStatement();
             DNI = DNI;
+            
             dineroVuelo = dineroVuelo;
             resultado = mandato.executeQuery("SELECT compras_totales FROM public.usuarios WHERE DNI="+DNI+";");
             
