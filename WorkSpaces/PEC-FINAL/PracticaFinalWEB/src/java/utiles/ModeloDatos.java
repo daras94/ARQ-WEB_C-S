@@ -72,7 +72,7 @@ public class ModeloDatos {
         } catch (SQLException ex) {
             Logger.getLogger(ModeloDatos.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception e) {
-            System.out.println("Ha ocurrido un error al encontrar los vuelos ");
+            System.out.println("Ha ocurrido un error al encontrar los vuelos por persona");
         }
     }
     
@@ -83,7 +83,7 @@ public class ModeloDatos {
         } catch (SQLException ex) {
             Logger.getLogger(ModeloDatos.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception e) {
-            System.out.println("Ha ocurrido un error al encontrar los vuelos ");
+            System.out.println("Ha ocurrido un error al encontrar las compras ");
         }
 
     }
