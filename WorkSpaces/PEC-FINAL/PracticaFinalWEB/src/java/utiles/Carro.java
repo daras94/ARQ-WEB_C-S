@@ -1,6 +1,7 @@
 package utiles;
 
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 /**
@@ -12,7 +13,7 @@ public class Carro {
     private ArrayList<Vuelo> vuelos;
 
     public Carro() {
-        vuelos = new ArrayList<Vuelo>();        
+        vuelos = new ArrayList<>();        
     }
 
     public ArrayList<Vuelo> getVuelos() {
@@ -27,9 +28,8 @@ public class Carro {
         return vuelos.size();
     }
     
-    public void anadirVueloCesta(String origen, String destino, float precio){
-        Vuelo v = new Vuelo(origen,destino,precio);
-        vuelos.add(v);
+    public void anadirVueloCesta(String origen, String destino, float precio, Date fecha){
+        vuelos.add(new Vuelo(origen,destino,precio, fecha));
     }
     
 }

@@ -7,7 +7,9 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- * Aquí se encontraran todas las funciones que produciran el funcionamiento de nuestra aplicación
+ * Aquí se encontraran todas las funciones que produciran el funcionamiento de
+ * nuestra aplicación
+ *
  * @author RMGSB
  */
 public class ModeloDatos {
@@ -39,9 +41,7 @@ public class ModeloDatos {
     public void setResultado(ResultSet resultado) {
         this.resultado = resultado;
     }
-    
-    
-    
+
     public void obtenerVuelos() {
         try {
             mandato = conexion.createStatement();
@@ -53,44 +53,40 @@ public class ModeloDatos {
         }
 
     }
-    
+
     //Obtener los billetes con origen, destino y fecha
-    public void obtenerBilletes(String o, String d,String fi, String fv){
+    public void obtenerBilletes(String o, String d, String fi, String fv) {
         try {
             mandato = conexion.createStatement();
             //pasamos la fecha en string a la fecha en formato datetime
-            String f = fi.replace('/','-');
-            if ((fv == null) || fv.equals("")){
+            String f = fi.replace('/', '-');
+            if ((fv == null) || fv.equals("")) {
                 //where the_timestamp_column::date = date ... -> como hemos puesto que la fecha es
                 //un timestamp y necesitamos comparar solo el día, no la hora, hacemos un cast
-                resultado = mandato.executeQuery("SELECT * FROM trayecto where plazas>0 and aer_origen = '" + o + "' and aer_destino = '" + d + "' and fecha::timestamp::date = '" + f+"'");
-                
-            }
-            //si se ha puesto fecha de vuelta
-            else{
-                String fida = fi.replace('/','-');
-                String fvu = fv.replace('/','-');
+                resultado = mandato.executeQuery("SELECT * FROM trayecto where plazas>0 and aer_origen = '" + o + "' and aer_destino = '" + d + "' and fecha::timestamp::date = '" + f + "'");
+
+            } //si se ha puesto fecha de vuelta
+            else {
+                String fida = fi.replace('/', '-');
+                String fvu = fv.replace('/', '-');
                 //aer_origen in ('Barcelona','Madrid') and aer_destino in ('Madrid','Barcelona') and fecha::timestamp::date in ('2019-01-15', '2019-01-30
-                resultado = mandato.executeQuery("SELECT * FROM trayecto where plazas>0 and aer_origen in ( '" + o + "', '"+d+"') and aer_destino in ( '" + o + "', '"+d+"') and fecha::timestamp::date in ( '" + fida + "', '"+fvu+"')");//and aer_destino = '" + o + "' and fecha::timestamp::date = '" + fvu+"'");//and aer_origen = '" + d + "'!and aer_destino = '" + o + "' and fecha::timestamp::date = '" + fvu+"' order by fecha desc");
-            }  
-        }
-         catch (SQLException ex) {
+                resultado = mandato.executeQuery("SELECT * FROM trayecto where plazas>0 and aer_origen in ( '" + o + "', '" + d + "') and aer_destino in ( '" + o + "', '" + d + "') and fecha::timestamp::date in ( '" + fida + "', '" + fvu + "')");//and aer_destino = '" + o + "' and fecha::timestamp::date = '" + fvu+"'");//and aer_origen = '" + d + "'!and aer_destino = '" + o + "' and fecha::timestamp::date = '" + fvu+"' order by fecha desc");
+            }
+        } catch (SQLException ex) {
             Logger.getLogger(ModeloDatos.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        catch (NullPointerException nw){
+        } catch (NullPointerException nw) {
             System.out.println("NPE: " + nw);
-        }
-        catch (Exception e) {
-            System.out.println("Ha ocurrido un error al encontrar los vuelos: "+e);
+        } catch (Exception e) {
+            System.out.println("Ha ocurrido un error al encontrar los vuelos: " + e);
         }
     }
-    
+
     //si compra un billete de avión, se le debe mostrar un resguardo en pdf _< hay que coger los valores de la sesión
-    public void imprimierBillete(){
-        Document document = new Document();
+    public void imprimierBillete() {
+ /*       Document document = new Document();
         String ide = generarIdentificador(alfanum);
-        String DEST = "C:\\Users\\solea\\Desktop\\Arquitectura y diseño de sistemas web\\Práctica\\PracticaFinal\\ResguardosBilletes\\"+ide+".pdf";
-        
+        String DEST = "C:\\Users\\solea\\Desktop\\Arquitectura y diseño de sistemas web\\Práctica\\PracticaFinal\\ResguardosBilletes\\" + ide + ".pdf";
+
         //De los valores de la sesión metemos en la bd el billete  ya comprado, con id_usuario el DNI del usuario identificado
         //VEEEEEEEEEEEEEEEEEEEEERRRRRR
         try {
@@ -100,15 +96,14 @@ public class ModeloDatos {
             //como ya se ha comprado el billete lo metemos en la base de datos. Habria que coger de algun lado esos valores
             String q = "INSERT INTO Billete (aer_origen,aer_destino,fecha,identificador,id_usuario) values(meter los valores)";
             resultado = mandato.executeQuery(q);
-        }
-         catch (SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(ModeloDatos.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception e) {
             System.out.println("Ha ocurrido un error al encontrar los vuelos");
         }
-        
-        try{
-            PdfWriter.getInstance(document,new FileOutputStream(DEST));
+
+        try {
+           PdfWriter.getInstance(document, new FileOutputStream(DEST));
             document.open();
             //Creamos un párrafo nuevo llamado "vacio1" para espaciar los elementos.
             Paragraph vacio1 = new Paragraph();
@@ -122,11 +117,11 @@ public class ModeloDatos {
             titulo.setFont(FontFactory.getFont("Times New Roman", 20, Font.BOLD, BaseColor.BLUE));
             titulo.add("RESGUARDO DEL BILLETE");
             document.add(titulo);
-            
+
             Paragraph saltolinea1 = new Paragraph();
             saltolinea1.add("\n\n");
             document.add(saltolinea1);
-            
+
             Paragraph nom = new Paragraph("Estimado/a Nombre Apellidos");
             document.add(nom);
             Paragraph par = new Paragraph("Gracias por elegir FINALWEB para su viaje.");
@@ -139,7 +134,7 @@ public class ModeloDatos {
             note.add("Para evitar problemas mientras realiza una compra en nuestra web, por favor confirme todos los detalles de la tarjeta de crédito que va a usar para la compra. También conuslte con su insitución financiera sobre las condiciones de comprar fuera de su lugar de residencia, compras internacionales y compras online. FINALWEB no es responsable si su insitución financiera rechaza autorizar el pago de su reserva.");
             document.add(note);
             document.add(saltolinea1);
-            
+
             PdfPTable table = new PdfPTable(5);
             //Añadimos los títulos a la tabla. 
             Paragraph columna1 = new Paragraph("NOMBRE");
@@ -167,7 +162,7 @@ public class ModeloDatos {
             columna5.getFont().setStyle(Font.BOLD);
             columna5.getFont().setSize(10);
             table.addCell(columna5);
-            
+
             //Añadimos datos de prueba, aquí se deberían sacar de la sesión
             //cons = mandato.executeQuery("Select nombre from usuarios where DNI = usuario_identificado")
             table.addCell("Carmen Alvargonzalez"); //poner el nombre de la persona que está iniciando sesión, cona
@@ -175,34 +170,32 @@ public class ModeloDatos {
             table.addCell("Madrid"); //aeropuerto origen que habria que pasar por parametro
             table.addCell("Barcelona"); //aeropuerto destino que habria que pasar por parametro
             table.addCell("20/10/2019 15:25"); //fecha que habria que pasar por parametro
-            
-            
+
             document.add(table);
             document.close();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error al crear el archivo");
-        }
+        }*/
     }
-    
+
     //Se crea el identificador para el billete
-    public static String generarIdentificador(String an){
-        String ide="";
-        for (int i=0; i<=5; i++){
+    public static String generarIdentificador(String an) {
+        String ide = "";
+        for (int i = 0; i <= 5; i++) {
             int numero = (int) (Math.random() * 36);
             //System.out.println(numero);
-            ide=ide + an.charAt(numero);
+            ide = ide + an.charAt(numero);
             //System.out.println(ide);
         }
         //System.out.println(ide);
         return ide;
     }
-    
+
     public void abrirConexion() {
 
         try {
             Class.forName("org.postgresql.Driver");
-            conexion = DriverManager.getConnection("jdbc:postgresql://localhost:5432/PECLWeb", "postgres", "ruben");
+            conexion = DriverManager.getConnection("jdbc:postgresql://localhost:5432/PECLWeb", "web_generic", "1234");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ModeloDatos.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

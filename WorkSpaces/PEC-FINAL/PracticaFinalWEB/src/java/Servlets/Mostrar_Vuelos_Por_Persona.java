@@ -23,24 +23,26 @@ public class Mostrar_Vuelos_Por_Persona extends HttpServlet {
 
     private ModeloDatos bd;
 
+    @Override
     public void init(ServletConfig cfg) throws ServletException {
         bd = new ModeloDatos();
         bd.abrirConexion();
     }
-    
-    
+
+    @Override
     public void destroy() {
         bd.cerrarConexion();
         super.destroy();
     }
-    
+
+    @Override
     public void service(HttpServletRequest peticion, HttpServletResponse respuesta) throws ServletException, IOException {
 
         try {
             HttpSession s = peticion.getSession(true);
             String DNI = peticion.getParameter("DNI");
-            int dineroVuelo = peticion.getParameter("precioVuelo");
-            bd.ObtenerVuelosPorPersona(DNI, dineroVuelo);
+            int dineroVuelo = Integer.valueOf(peticion.getParameter("precioVuelo"));
+            //bd.ObtenerVuelosPorPersona(DNI, dineroVuelo);
             s.setAttribute("consulta", bd.getResultado());
             respuesta.sendRedirect(respuesta.encodeRedirectURL("listado_numero_vuelos_por_persona.jsp"));
         } catch (Exception e) {
@@ -48,5 +50,4 @@ public class Mostrar_Vuelos_Por_Persona extends HttpServlet {
         }
     }
 
-   
 }

@@ -12,6 +12,7 @@ package Servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -32,6 +33,7 @@ import utiles.*;
 
 public class ServletAnadirCesta extends HttpServlet {
 
+    @Override
     public void service(HttpServletRequest peticion, HttpServletResponse respuesta) throws ServletException, IOException {
         HttpSession session = peticion.getSession();
         Carro carro = (Carro) session.getAttribute("carro");
@@ -40,8 +42,8 @@ public class ServletAnadirCesta extends HttpServlet {
         String id = peticion.getParameter("id");
         String p = peticion.getParameter("precio");
         float precio = Float.parseFloat(p);
-        String fecha = peticion.getParameter("fecha");
-        carro.anadirVueloCesta(aer_origen,aer_destino,precio,fecha);
+        Date fecha = Date.valueOf(peticion.getParameter("fecha"));
+        carro.anadirVueloCesta(aer_origen, aer_destino, precio, fecha);
     }
     
 }
