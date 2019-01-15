@@ -1,8 +1,11 @@
 <%-- 
-    Document   : dashboard
-    Created on : 05-ene-2019, 13:20:50
+    Document   : data-buelos
+    Created on : 15-ene-2019, 10:03:34
     Author     : david
 --%>
+
+<%@page import="gr4.web.util.Carrito"%>
+<%@page import="gr4.web.util.Trayectos"%>
 <%@page import="gr4.web.util.Aeropuerto"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.Connection"%>
@@ -17,7 +20,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Ver/Gestionar Aeropuerto</title>
+        <title>Listado de Vuelos</title>
         <meta name="description" content="Ela Admin - HTML5 Admin Template">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/res/css/admin.css">
@@ -34,32 +37,44 @@
             <nav class="navbar navbar-expand-sm navbar-default">
                 <div id="main-menu" class="main-menu collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active">
-                            <a href="${pageContext.request.contextPath}/admin"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/index.html">
+                                <i class="menu-icon fa fa-laptop"></i>Inicio
+                            </a>
                         </li>
-                        <li class="menu-title"> Gestion:</li>
+                        <%
+                            String path_url = pageContext.getServletContext().getContextPath();
+                            Authentication auth = null;
+                            try {
+                                auth = ((SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT")).getAuthentication();
+                            } catch (Exception ex) {
+                                out.append("<li>");
+                                out.append("<a href='" + path_url + "/pag/register.html'><i class='menu-icon fa  fa-user-md'></i>Registro</a>");
+                                out.append("</li>");
+                            }
+                        %>
+                        <li class="menu-title"> Servicios:</li>
                         <!-- /.menu-title -->
-                        <li class="menu-item-has-children dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                                <i class="menu-icon fa  fa-fighter-jet"></i>Aeropuertos
+                        <li class="active">
+                            <a href="${pageContext.request.contextPath}/pag/data-vuelos.html">
+                                <i class="menu-icon fa fa-fighter-jet"></i>Vuelos
                             </a>
-                            <ul class="sub-menu children dropdown-menu">                           
-                                <li><i class="menu-icon fa fa-th"></i><a href="${pageContext.request.contextPath}/admin/data-airports.html">Ver/Gestionar</a></li>
-                                <li><i class="menu-icon fa fa-th"></i><a href="${pageContext.request.contextPath}/admin/create-airports.html">Crear</a></li>
-                            </ul>
                         </li>
-                        <li class="menu-item-has-children dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                                <i class="menu-icon fa fa-area-chart"></i>Trayectos
+                        <li>
+                            <a href="${pageContext.request.contextPath}/pag/carrito.html">
+                                <i class="menu-icon fa fa-shopping-cart"></i>Carrito
+                                <%
+                                    Carrito carro = (Carrito) session.getAttribute("carro");
+                                    int num_vuelos = 0;
+                                    if (carro != null) {
+                                        num_vuelos = carro.getCarro().size();
+                                    }
+                                    out.append("<span class='badge badge-pending'>").append(String.valueOf(num_vuelos)).append("</span>");
+                                %>
                             </a>
-                            <ul class="sub-menu children dropdown-menu">                           
-                                <li><i class="menu-icon fa fa-th"></i><a href="${pageContext.request.contextPath}/admin/data-journey.html">Ver/Gestionar</a></li>
-                                <li><i class="menu-icon fa fa-th"></i><a href="${pageContext.request.contextPath}/admin/create-journey.html">Crear</a></li>
-                            </ul>
                         </li>
                     </ul>
-                </div>
-                <!-- /.navbar-collapse -->
+                </div><!-- /.navbar-collapse -->
             </nav>
         </aside>
         <!-- /#left-panel -->
@@ -81,9 +96,7 @@
                     <div class="header-menu">
                         <div class="user-area dropdown float-right">
                             <%
-                                String path_url = pageContext.getServletContext().getContextPath();
                                 try {
-                                    Authentication auth = ((SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT")).getAuthentication();
                                     if (auth.isAuthenticated()) {
                                         out.append("<a href='#' class='dropdown-toggle active' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>");
                                         boolean isAdmin = auth.getAuthorities().stream().anyMatch(r -> r.getAuthority().equals("ROLE_ADMIN"));
@@ -95,7 +108,7 @@
                                         out.append("</a>");
                                         String[] text = new String[]{"Mi Perfil", "Cerrar Sesion"};
                                         String[] icon = new String[]{"fa-user", "fa-power-off"};
-                                        String[] url = new String[]{"/admin", "/logout"};
+                                        String[] url = new String[]{(isAdmin) ? "/admin" : "/client", "/logout"};
                                         out.append("<div class='user-menu dropdown-menu'>");
                                         for (int i = 0; i < text.length; i++) {
                                             out.append("<a class='nav-link' href='").append(path_url + url[i]).append("'><i class='fa ").append(icon[i]).append("'></i>").append(text[i]).append("</a>");
@@ -105,7 +118,7 @@
                                         out.append("<a href='").append(path_url).append(path_url).append("/login'><i class='menu-icon fa fa-laptop'></i>Iniciar Session</a>");
                                     }
                                 } catch (Exception ex) {
-                                    out.append("<a href='").append(path_url).append(path_url).append("/login'>Iniciar Session <i class='menu-icon fa fa-laptop'></i></a>");
+                                    out.append("<a href='").append(path_url).append("/login'>Iniciar Session <i class='menu-icon fa fa-sign-in'></i></a>");
                                 }
                             %>
                         </div>
@@ -120,10 +133,10 @@
                     if (status != null) {
                         out.append("<div class='sufee-alert alert with-close alert-info alert-dismissible fade show'>");
                         out.append("<span class='badge badge-pill badge-info'>");
-                        out.append((status != "-1")? "Success" : "Out").append("!!!");
+                        out.append((status != "-1") ? "Success" : "Out").append("!!!");
                         out.append("</span>");
                         if (status != "-1") {
-                            out.append(" - El aeropuerto fue eliminado corectamente");
+                            out.append(" - No se pudo añadir el vuelo al carrito");
                         } else {
                             out.append(" - Algo Fallo Al eliminar el aeropuerto.");
                         }
@@ -137,38 +150,54 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
-                                <div class="card-header">
-                                    <strong class="card-title">Aeropuertos</strong>
+                                <div class="card-header ">
+                                    <strong class="card-title">Vuelos Disponibles</strong>
                                 </div>
                                 <div class="card-body">
-                                    <table id="bootstrap-data-table" class="table table-striped table-bordered">
-                                        <col>
-                                        <col width="80">
-                                        <col width="50">
-                                        <thead>
-                                            <tr>
-                                                <th>Nombre</th>
-                                                <th>Tasa</th>
-                                                <th>######</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <%
-                                                Connection con = (Connection) pageContext.getServletContext().getAttribute("conexion");
-                                                ArrayList<String[]> aero = new Aeropuerto(con).getAeropuertos();
-                                                for (int i = 0; i < aero.size(); i++) {
-                                                    out.append("<tr>");
-                                                    for (int j = 0; j < aero.get(i).length; j++) {
-                                                        out.append("<td>").append(aero.get(i)[j]).append("</td>");
+                                    <form action="${pageContext.request.contextPath}/pag/addvuelocarrito" method="get" novalidate="novalidate">
+                                        <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                            <col>
+                                            <col>
+                                            <col width="80">
+                                            <col width="80">
+                                            <col width="40">
+                                            <col width="150">
+                                            <col width="80">
+                                            <thead>
+                                                <tr>
+                                                    <th>Origen</th>
+                                                    <th>Destino</th>
+                                                    <th>Pecio</th>
+                                                    <th>Fecha</th>
+                                                    <th>Plazas</th>
+                                                    <th>Num Billetes</th>
+                                                    <th>#######</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <%
+                                                    try {
+                                                        Connection con = (Connection) pageContext.getServletContext().getAttribute("conexion");
+                                                        ArrayList<String[]> journey = new Trayectos(con).getTrayectos();
+                                                        for (int i = 0; i < journey.size(); i++) {
+                                                            String num_plazas = journey.get(i)[4];
+                                                            out.append("<tr").append("").append(">");
+                                                            for (int j = 0; j < (journey.get(i).length - 1); j++) {
+                                                                out.append("<td>").append(journey.get(i)[j]).append(((j == 2) ? " <i class='fa fa-eur'></i>" : "")).append("</td>");
+                                                            }
+                                                            out.append("<td><input type='number' id='num-billetes' name='num-billetes' value='1' placeholder='1' class='form-control' min='1' max='").append(num_plazas).append("' required></td>");
+                                                            out.append("<td>");
+                                                            out.append("<button type='submit' class='btn btn-outline-success' name='id-vuelo' value='" + journey.get(i)[5] + "'>Añadir &nbsp;<i class='fa fa-shopping-cart'></i></button>");
+                                                            out.append("</td>");
+                                                            out.append("</tr>");
+                                                        }
+                                                    } catch (Exception ex) {
+                                                        
                                                     }
-                                                    out.append("<td><a class='btn btn-danger btn-sm' href='");
-                                                    out.append(path_url).append("/admin/deleteairport?name=").append(aero.get(i)[0]);
-                                                    out.append("' role='button'>Borrar <i class='fa fa-eraser'></i></a></td>");
-                                                    out.append("</tr>");
-                                                }
-                                            %>
-                                        </tbody>
-                                    </table>
+                                                %>
+                                            </tbody>
+                                        </table>
+                                    </form>
                                 </div>
                             </div>
                         </div>

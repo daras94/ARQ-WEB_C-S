@@ -1,3 +1,4 @@
+<%@page import="gr4.web.util.Carrito"%>
 <%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%@page import="org.springframework.security.core.authority.SimpleGrantedAuthority"%>
 <%@page import="java.util.Collection"%>
@@ -28,8 +29,8 @@
                         <li class="active">
                             <a href="${pageContext.request.contextPath}/index.html"><i class="menu-icon fa fa-laptop"></i>Inicio</a>
                         </li>
-                        <% 
-                            String path_url     = pageContext.getServletContext().getContextPath();
+                        <%
+                            String path_url = pageContext.getServletContext().getContextPath();
                             Authentication auth = null;
                             try {
                                 auth = ((SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT")).getAuthentication();
@@ -39,17 +40,21 @@
                                 out.append("</li>");
                             }
                         %>
-                        <li class="menu-title"> Gestion:</li>
+                        <li class="menu-title"> Servicios:</li>
                         <!-- /.menu-title -->
-                        <li class="menu-item-has-children dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                                <i class="menu-icon fa  fa-fighter-jet"></i>Aeropuertos
+                        <li><a href="${pageContext.request.contextPath}/pag/data-vuelos.html"><i class="menu-icon fa fa-fighter-jet"></i>Vuelos</a></li>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/pag/carrito.html">
+                                <i class="menu-icon fa fa-shopping-cart"></i>Carro
+                                <%
+                                    Carrito carro = (Carrito)session.getAttribute("carro");
+                                    int num_vuelos = 0;
+                                    if (carro != null) {
+                                        num_vuelos = carro.getCarro().size();
+                                    }
+                                    out.append("<span class='badge badge-pending'>").append(String.valueOf(num_vuelos)).append("</span>");
+                                %>
                             </a>
-                            <ul class="sub-menu children dropdown-menu">                           
-                                <li><i class="menu-icon fa fa-th"></i><a href="${pageContext.request.contextPath}/admin/data-airports.html">Ver/Gestionar</a></li>
-                                <li><i class="menu-icon fa fa-th"></i><a href="forms-advanced.html">Crear</a></li>
-                                <li><i class="menu-icon fa fa-th"></i><a href="forms-advanced.html">Trayecto</a></li>
-                            </ul>
                         </li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -74,7 +79,7 @@
                     <div class="header-menu">
                         <div class="user-area dropdown float-right">
                             <%
-                                try { 
+                                try {
                                     if (auth.isAuthenticated()) {
                                         out.append("<a href='#' class='dropdown-toggle active' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>");
                                         boolean isAdmin = auth.getAuthorities().stream().anyMatch(r -> r.getAuthority().equals("ROLE_ADMIN"));
@@ -86,14 +91,14 @@
                                         out.append("</a>");
                                         String[] text = new String[]{"Mi Perfil", "Cerrar Sesion"};
                                         String[] icon = new String[]{"fa-user", "fa-power-off"};
-                                        String[] url = new String[]{(isAdmin)? "/admin" : "/client", "/logout"};
+                                        String[] url = new String[]{(isAdmin) ? "/admin" : "/client", "/logout"};
                                         out.append("<div class='user-menu dropdown-menu'>");
                                         for (int i = 0; i < text.length; i++) {
                                             out.append("<a class='nav-link' href='").append(path_url + url[i]).append("'><i class='fa ").append(icon[i]).append("'></i>").append(text[i]).append("</a>");
                                         }
                                         out.append("<div/>");
-                                    } else  {
-                                        out.append("<a href='").append(path_url).append(path_url).append("/login'><i class='menu-icon fa fa-laptop'></i>Iniciar Session</a>");                                    
+                                    } else {
+                                        out.append("<a href='").append(path_url).append(path_url).append("/login'><i class='menu-icon fa fa-laptop'></i>Iniciar Session</a>");
                                     }
                                 } catch (Exception ex) {
                                     out.append("<a href='").append(path_url).append("/login'>Iniciar Session <i class='menu-icon fa fa-sign-in'></i></a>");
@@ -104,10 +109,10 @@
                 </div>
             </header>
             <!-- /#header -->
-            
+
             <!-- Content -->
             <div class="content">
-                
+
             </div>
             <!-- /.content -->
             <div class="clearfix"></div>

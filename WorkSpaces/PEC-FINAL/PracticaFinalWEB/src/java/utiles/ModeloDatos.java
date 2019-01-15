@@ -13,35 +13,35 @@ import javax.swing.JOptionPane;
  * @author RMGSB
  */
 public class ModeloDatos {
-
+    
     private Connection conexion;
     private Statement mandato;
     private ResultSet resultado;
-
+    
     public Connection getConexion() {
         return conexion;
     }
-
+    
     public void setConexion(Connection conexion) {
         this.conexion = conexion;
     }
-
+    
     public Statement getMandato() {
         return mandato;
     }
-
+    
     public void setMandato(Statement mandato) {
         this.mandato = mandato;
     }
-
+    
     public ResultSet getResultado() {
         return resultado;
     }
-
+    
     public void setResultado(ResultSet resultado) {
         this.resultado = resultado;
     }
-
+    
     public void obtenerVuelos() {
         try {
             mandato = conexion.createStatement();
@@ -54,20 +54,17 @@ public class ModeloDatos {
     }
     
     public void ObtenerVuelosPorPersona(String DNI, int dineroVuelo) {
-    try {
+        try {
             mandato = conexion.createStatement();
             DNI = DNI;
             
             dineroVuelo = dineroVuelo;
-            resultado = mandato.executeQuery("SELECT compras_totales FROM public.usuarios WHERE DNI="+DNI+";");
+            resultado = mandato.executeQuery("SELECT * FROM public.usuarios WHERE DNI=" + DNI + ";");
             
-            if(resultado % 3 == 0)
-            {
-            	dineroVuelo = dineroVuelo / 2;
-            }
-            else
-            {
-            	dineroVuelo = dineroVuelo;
+            if (resultado.getInt("compras_totales") % 3 == 0) {
+                dineroVuelo = dineroVuelo / 2;
+            } else {
+                dineroVuelo = dineroVuelo;
             }
         } catch (SQLException ex) {
             Logger.getLogger(ModeloDatos.class.getName()).log(Level.SEVERE, null, ex);
@@ -85,7 +82,7 @@ public class ModeloDatos {
         } catch (Exception e) {
             System.out.println("Ha ocurrido un error al encontrar los vuelos ");
         }
-
+        
     }
 
     //Obtener los billetes con origen, destino y fecha
@@ -98,7 +95,7 @@ public class ModeloDatos {
                 //where the_timestamp_column::date = date ... -> como hemos puesto que la fecha es
                 //un timestamp y necesitamos comparar solo el día, no la hora, hacemos un cast
                 resultado = mandato.executeQuery("SELECT * FROM trayecto where plazas>0 and aer_origen = '" + o + "' and aer_destino = '" + d + "' and fecha::timestamp::date = '" + f + "'");
-
+                
             } //si se ha puesto fecha de vuelta
             else {
                 String fida = fi.replace('/', '-');
@@ -117,7 +114,7 @@ public class ModeloDatos {
 
     //si compra un billete de avión, se le debe mostrar un resguardo en pdf _< hay que coger los valores de la sesión
     public void imprimierBillete() {
- /*       Document document = new Document();
+        /      Document document = new Document();
         String ide = generarIdentificador(alfanum);
         String DEST = "C:\\Users\\solea\\Desktop\\Arquitectura y diseño de sistemas web\\Práctica\\PracticaFinal\\ResguardosBilletes\\" + ide + ".pdf";
 
@@ -209,7 +206,7 @@ public class ModeloDatos {
             document.close();
         } catch (Exception e) {
             System.out.println("Error al crear el archivo");
-        }*/
+        }
     }
 
     //Se crea el identificador para el billete
@@ -224,9 +221,9 @@ public class ModeloDatos {
         //System.out.println(ide);
         return ide;
     }
-
+    
     public void abrirConexion() {
-
+        
         try {
             Class.forName("org.postgresql.Driver");
             conexion = DriverManager.getConnection("jdbc:postgresql://localhost:5432/PECLWeb", "web_generic", "1234");
@@ -237,9 +234,9 @@ public class ModeloDatos {
         } catch (Exception e) {
             System.out.println("Ha ocurrido un error al conectarse a la BD");
         }
-
+        
     }
-
+    
     public void cerrarConexion() {
         try {
             conexion.close();
@@ -247,5 +244,5 @@ public class ModeloDatos {
             System.out.println("Ha ocurrido un error al cerrar la conexión.");
         }
     }
-
+    
 }

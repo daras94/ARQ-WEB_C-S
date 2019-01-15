@@ -33,8 +33,9 @@ public class Trayectos {
         try {
             Statement stmt = com.createStatement();
             stmt.executeUpdate(query);
+            stmt.closeOnCompletion();
         } catch (SQLException ex) {
-            Logger.getLogger(Aeropuerto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Trayectos.class.getName()).log(Level.SEVERE, null, ex);
             status = -1;
         }
         return status; 
@@ -55,8 +56,10 @@ public class Trayectos {
                 String id_viaje = String.valueOf(rs.getInt("id_viaje"));
                 aeropuertos.add(aeropuertos.size(), new String[]{origen, destino, precio, fecha, plazas, id_viaje});
             }
+            rs.close();
+            stmt.close();
         } catch (SQLException ex) {
-            Logger.getLogger(Aeropuerto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Trayectos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return aeropuertos;
     }
@@ -67,8 +70,23 @@ public class Trayectos {
         try {
             Statement stmt = com.createStatement();
             stmt.executeUpdate(query);
+            stmt.closeOnCompletion();
         } catch (SQLException ex) {
-            Logger.getLogger(Aeropuerto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Trayectos.class.getName()).log(Level.SEVERE, null, ex);
+            status = -1;
+        }
+        return status;
+    }
+    
+     public int updateTrayectoPlazas(int id, int num_billetes) {
+        final String query = "UPDATE public.trayecto SET plazas= ((select plazas from public.trayecto where id_viaje = " + id + ") - " + num_billetes + ") WHERE id_viaje = " + id;
+        int status = 0;
+        try {
+            Statement stmt = com.createStatement();
+            stmt.executeUpdate(query);
+            stmt.closeOnCompletion();
+        } catch (SQLException ex) {
+            Logger.getLogger(Trayectos.class.getName()).log(Level.SEVERE, null, ex);
             status = -1;
         }
         return status;

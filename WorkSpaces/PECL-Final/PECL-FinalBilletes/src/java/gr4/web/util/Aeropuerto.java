@@ -37,6 +37,8 @@ public class Aeropuerto {
                 String tasas  = String.valueOf(rs.getFloat("tasas"));
                 aeropuertos.add(aeropuertos.size(), new String[]{nombre, tasas});
             }
+            rs.close();
+            stmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(Aeropuerto.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -52,6 +54,8 @@ public class Aeropuerto {
             while (rs.next()) {
                 nombre.add(nombre.size(), rs.getString("nombre"));
             }
+            rs.close();
+            stmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(Aeropuerto.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -64,6 +68,7 @@ public class Aeropuerto {
         try {
             Statement stmt = com.createStatement();
             stmt.executeUpdate(query);
+            stmt.closeOnCompletion();
         } catch (SQLException ex) {
             Logger.getLogger(Aeropuerto.class.getName()).log(Level.SEVERE, null, ex);
             status = -1;
@@ -77,6 +82,7 @@ public class Aeropuerto {
         try {
             Statement stmt = com.createStatement();
             stmt.executeUpdate(query);
+            stmt.closeOnCompletion();
         } catch (SQLException ex) {
             Logger.getLogger(Aeropuerto.class.getName()).log(Level.SEVERE, null, ex);
             status = -1;

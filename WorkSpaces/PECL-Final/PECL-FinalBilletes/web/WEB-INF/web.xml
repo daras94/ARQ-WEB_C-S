@@ -25,6 +25,26 @@
         <servlet-name>DeleteJourney</servlet-name>
         <servlet-class>gr4.web.servlet.DeleteJourney</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddVueloCarrito</servlet-name>
+        <servlet-class>gr4.web.servlet.AddVueloCarrito</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RemoveVueloCarrito</servlet-name>
+        <servlet-class>gr4.web.servlet.RemoveVueloCarrito</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PayOneFlyCarrito</servlet-name>
+        <servlet-class>gr4.web.servlet.PayOneFlyCarrito</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ObternerBillete</servlet-name>
+        <servlet-class>gr4.web.servlet.ObternerBillete</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PayFullFlyCarrito</servlet-name>
+        <servlet-class>gr4.web.servlet.PayFullFlyCarrito</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>deleteairport</servlet-name>
         <url-pattern>/admin/deleteairport</url-pattern>
@@ -40,6 +60,26 @@
     <servlet-mapping>
         <servlet-name>DeleteJourney</servlet-name>
         <url-pattern>/admin/deletejourney</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddVueloCarrito</servlet-name>
+        <url-pattern>/pag/addvuelocarrito</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoveVueloCarrito</servlet-name>
+        <url-pattern>/pag/removevuelocarrito</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PayOneFlyCarrito</servlet-name>
+        <url-pattern>/client/payoneflycarrito</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ObternerBillete</servlet-name>
+        <url-pattern>/client/obternerbillete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PayFullFlyCarrito</servlet-name>
+        <url-pattern>/client/payfullflycarrito</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

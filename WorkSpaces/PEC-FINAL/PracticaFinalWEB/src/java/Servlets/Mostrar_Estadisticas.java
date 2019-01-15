@@ -19,7 +19,7 @@ import utiles.ModeloDatos;
  *
  * @author AngelaMorenoPrado
  */
-public class Mostrar_Vuelos_Por_Persona extends HttpServlet {
+public class Mostrar_Estadisticas extends HttpServlet {
 
     private ModeloDatos bd;
 

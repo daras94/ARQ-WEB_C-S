@@ -78,16 +78,15 @@ CREATE TABLE public.Billete (
     aer_origen text COLLATE pg_catalog."default" NOT NULL,
     aer_destino text COLLATE pg_catalog."default" NOT NULL,
     fecha timestamp without time zone NOT NULL,
-    identificador text COLLATE pg_catalog."default" NOT NULL,
-    id_usuario text COLLATE pg_catalog."default" NOT NULL,
+    identificador varchar(6) NOT NULL,
+    id_usuario varchar(9) NOT NULL,
     CONSTRAINT usuario FOREIGN KEY (id_usuario)
         REFERENCES public.usuarios (DNI) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 );
 
-ALTER TABLE public."Billete"
-OWNER to postgres;
+ALTER TABLE public.Billete OWNER to web_generic;
 
 ------------------------------------------------------------------
 -- Table: public.usuarios

@@ -42,7 +42,7 @@ public class Mostrar_Vuelos_Por_Persona extends HttpServlet {
             HttpSession s = peticion.getSession(true);
             String DNI = peticion.getParameter("DNI");
             int dineroVuelo = Integer.valueOf(peticion.getParameter("precioVuelo"));
-            //bd.ObtenerVuelosPorPersona(DNI, dineroVuelo);
+            bd.ObtenerVuelosPorPersona(DNI, dineroVuelo);
             s.setAttribute("consulta", bd.getResultado());
             respuesta.sendRedirect(respuesta.encodeRedirectURL("listado_numero_vuelos_por_persona.jsp"));
         } catch (Exception e) {

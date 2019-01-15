@@ -152,7 +152,7 @@
                                     <h3 class="text-center">Dar de alta</h3>
                                 </div>
                                 <hr>
-                                <form action="${pageContext.request.contextPath}/admin/createjourney" method="get" novalidate="novalidate">
+                                <form action="${pageContext.request.contextPath}/admin/createjourney" method="get">
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="form-group">
@@ -208,7 +208,7 @@
                                         <div class="col col-sm-6">
                                             <label for="cc-payment" class="control-label mb-1">Numero de Plazas</label>
                                             <div class="input-group">
-                                                <input type="number" id="num-plazas" name="num-plazas" placeholder="0" class="form-control" required>
+                                                <input type="number" id="num-plazas" name="num-plazas" placeholder="1" class="form-control" min="1" max="75" required>
                                                 <div class="input-group-addon"><i class="fa fa-group"></i></div>
                                             </div>
                                         </div>

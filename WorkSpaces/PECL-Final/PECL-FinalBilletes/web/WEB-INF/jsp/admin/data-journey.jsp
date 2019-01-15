@@ -22,6 +22,7 @@
         <meta name="description" content="Ela Admin - HTML5 Admin Template">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/res/css/admin.css">
+        <link href="${pageContext.request.contextPath}/res/css/admin/lib/datatable/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <script src="${pageContext.request.contextPath}/res/js/jquery.min.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/res/js/popper.min.js"></script>
         <script src="${pageContext.request.contextPath}/res/js/bootstrap/bootstrap.js"></script>
@@ -155,7 +156,7 @@
                                                 <th>Pecio</th>
                                                 <th>Fecha</th>
                                                 <th>Num Plazas</th>
-                                                <th>Borrar</th>
+                                                <th>######</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -169,7 +170,7 @@
                                                     }
                                                     out.append("<td><a class='btn btn-danger btn-sm' href='");
                                                     out.append(path_url).append("/admin/deletejourney?id-viaje=").append(journey.get(i)[5]);
-                                                    out.append("' role='button'><i class='fa fa-eraser'></i></a></td>");
+                                                    out.append("' role='button'>Borrar <i class='fa fa-eraser'></i></a></td>");
                                                     out.append("</tr>");
                                                 }
                                             %>
