@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/PECL-FinalBilletes">
+    <!--
+       Definicion y configuracion del Pool de conexione de la base de datos. 
+    -->
+    <Resource 
+        auth="Container" 
+        driverClassName="org.postgresql.Driver" 
+        maxActive="100" 
+        maxIdle="30" 
+        maxWait="10000" 
+        name="jdbc/postgresql_pecweb" 
+        password="1234" 
+        removeAbandoned="true" 
+        type="javax.sql.DataSource" 
+        url="jdbc:postgresql://localhost:5432/PECLWeb" 
+        username="web_generic"
+    />
+</Context>

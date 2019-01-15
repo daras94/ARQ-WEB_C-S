@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <context-param>
+        <description>Conexion Posgrest SQL</description>
+        <param-name>conexion</param-name>
+        <param-value/>
+    </context-param>
+    <listener>
+        <description>ServletContextListener</description>
+        <listener-class>gr4.web.listener.ServletContextListener</listener-class>
+    </listener>
+    <servlet>
+        <servlet-name>deleteairport</servlet-name>
+        <servlet-class>gr4.web.servlet.DeleteAirport</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>createairport</servlet-name>
+        <servlet-class>gr4.web.servlet.CreateAirport</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>createJourney</servlet-name>
+        <servlet-class>gr4.web.servlet.CreateJourney</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteJourney</servlet-name>
+        <servlet-class>gr4.web.servlet.DeleteJourney</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteairport</servlet-name>
+        <url-pattern>/admin/deleteairport</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>createairport</servlet-name>
+        <url-pattern>/admin/createairport</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>createJourney</servlet-name>
+        <url-pattern>/admin/createjourney</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteJourney</servlet-name>
+        <url-pattern>/admin/deletejourney</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>redirect.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>
