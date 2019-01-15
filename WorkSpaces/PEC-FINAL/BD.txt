@@ -1,0 +1,120 @@
+-- Table: public.aeropuertos
+
+-- DROP TABLE public.aeropuertos;
+
+CREATE TABLE public.aeropuertos
+(
+    nombre text COLLATE pg_catalog."default" NOT NULL,
+    tasas real NOT NULL,
+    CONSTRAINT aeropuestos_pkey PRIMARY KEY (nombre)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.aeropuertos
+    OWNER to postgres;
+
+-- Table: public.compras
+
+-- DROP TABLE public.compras;
+
+CREATE TABLE public.compras
+(
+    id_usuario text COLLATE pg_catalog."default" NOT NULL,
+    id_compra text COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT compras_pkey PRIMARY KEY (id_compra, id_usuario)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.compras
+    OWNER to postgres;
+
+
+-- Table: public.trayecto
+
+-- DROP TABLE public.trayecto;
+
+CREATE TABLE public.trayecto
+(
+    aer_origen text COLLATE pg_catalog."default" NOT NULL,
+    aer_destino text COLLATE pg_catalog."default" NOT NULL,
+    id_viaje text COLLATE pg_catalog."default" NOT NULL,
+    precio real NOT NULL,
+    fecha date,
+    plazas integer,
+    CONSTRAINT trayecto_pkey PRIMARY KEY (id_viaje)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.trayecto
+    OWNER to postgres;
+
+
+-- Table: public.usuarios
+
+-- DROP TABLE public.usuarios;
+
+CREATE TABLE public.usuarios
+(
+    nombre text COLLATE pg_catalog."default" NOT NULL,
+    contrasena text COLLATE pg_catalog."default" NOT NULL,
+    rango text COLLATE pg_catalog."default" NOT NULL,
+    compras_totales integer,
+    "DNI" text COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT usuarios_pkey PRIMARY KEY ("DNI"),
+    CONSTRAINT verificarnombre CHECK (nombre ~ '^([A-ZÁÉÍÓÚÑ][a-záéíóúñü]*\s)+\s*$'::text)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.usuarios
+    OWNER to postgres;
+
+COMMENT ON COLUMN public.usuarios.compras_totales
+    IS 'Compras totales para ver si hay que aplicar el descuento';
+
+-- Trigger: comprobardni
+
+-- DROP TRIGGER comprobardni ON public.usuarios;
+
+CREATE TRIGGER comprobardni
+    BEFORE INSERT OR UPDATE 
+    ON public.usuarios
+    FOR EACH ROW
+    EXECUTE PROCEDURE public.comprobar();
+
+
+
+-- Table: public."Billete"
+
+-- DROP TABLE public."Billete";
+
+CREATE TABLE public."Billete"
+(
+    aer_origen text COLLATE pg_catalog."default" NOT NULL,
+    aer_destino text COLLATE pg_catalog."default" NOT NULL,
+    fecha timestamp without time zone NOT NULL,
+    identificador text COLLATE pg_catalog."default" NOT NULL,
+    id_usuario text COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT usuario FOREIGN KEY (id_usuario)
+        REFERENCES public.usuarios ("DNI") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public."Billete"
+    OWNER to postgres;

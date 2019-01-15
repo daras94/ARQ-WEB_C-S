@@ -1,0 +1,54 @@
+Constraint para verificar los nombres
+-alter table usuarios
+add constraint VerificarNombre
+Check("nombre" ~ '^([A-ZÁÉÍÓÚÑ][a-záéíóúñü]*\s)+\s*$')
+
+•	Cada componente empieza con mayúscula, pero las siguientes letras deben estar en minúscula.
+•	 Entre dos componentes hay un solo espacio en blanco.
+•	 No puede haber blancos ni al principio ni al final.
+•	 Nunca hay números ni signos de puntuación, pero si puede haber vocales acentuadas y con diéresis.
+
+
+Trigger y función para combrobar el DNI
+-- Function: public.comprobar()
+
+-- DROP FUNCTION public.comprobar();
+
+CREATE OR REPLACE FUNCTION public.comprobar()
+  RETURNS trigger AS
+$BODY$DECLARE letrasValidas CHAR(23);
+	letraCorrecta CHAR;
+	letraLeida CHAR(24);
+	valor INTEGER;
+	resto INTEGER;
+BEGIN
+	letrasValidas:='TRWAGMYFPDXBNJZSQVHLCKE';
+	valor:=(CAST(substring(NEW."DNI",1,8)AS INTEGER));
+	resto:=valor%23;
+	letraleida:=substring(NEW."DNI",9,9);
+	letraCorrecta := SUBSTR(letrasValidas, resto+1, 1);
+	
+	IF (letraCorrecta = letraLeida) THEN 
+		RAISE NOTICE 'CORRECTO';
+		RETURN new;
+	ELSE 
+		RAISE EXCEPTION 'ERROR';
+		RETURN null;
+	END IF;
+END$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION public.comprobar()
+  OWNER TO postgres;
+
+
+
+-- Trigger: comprobardni on public.cliente
+
+-- DROP TRIGGER comprobardni ON public.cliente;
+
+CREATE TRIGGER comprobardni
+  BEFORE INSERT OR UPDATE
+  ON public.usuarios
+  FOR EACH ROW
+  EXECUTE PROCEDURE public.comprobar();

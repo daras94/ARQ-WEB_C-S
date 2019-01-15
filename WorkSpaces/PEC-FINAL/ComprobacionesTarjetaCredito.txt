@@ -1,0 +1,32 @@
+-- Function: public.comprobarTarjeta()
+
+-- DROP FUNCTION public.comprobarTarjeta();
+
+CREATE OR REPLACE FUNCTION public.comprobarTarjeta()
+  RETURNS trigger AS
+$BODY$DECLARE 
+BEGIN
+	
+	IF (length(cast(NEW."num_tarjeta" as text)) > 15 AND length(cast(NEW."num_tarjeta" as text)) < 17) THEN 
+		RAISE NOTICE 'CORRECTO';
+		RETURN new;
+	ELSE 
+		RAISE EXCEPTION 'ERROR';
+		RETURN null;
+	END IF;
+END$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION public.comprobarTarjeta()
+  OWNER TO postgres;
+  
+  
+-- Trigger: comprobarTarjeta on public.usuarios
+
+-- DROP TRIGGER comprobarTarjeta ON public.usuarios;
+
+CREATE TRIGGER comprobarTarjeta
+  BEFORE INSERT OR UPDATE
+  ON public.usuarios
+  FOR EACH ROW
+  EXECUTE PROCEDURE public.comprobarTarjeta();
