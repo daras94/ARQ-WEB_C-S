@@ -19,9 +19,10 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Admin Dasboard</title>
-        <meta name="description" content="Ela Admin - HTML5 Admin Template">
+        <meta name="description" content="Admin Dasboard">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/res/css/admin.css">
+        <link href="${pageContext.request.contextPath}/res/css/admin/lib/datatable/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <script src="${pageContext.request.contextPath}/res/js/jquery.min.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/res/js/popper.min.js"></script>
         <script src="${pageContext.request.contextPath}/res/js/bootstrap/bootstrap.js"></script>
@@ -120,7 +121,7 @@
                         <div class="col-md-8">
                             <div class="card border border-success">
                                 <div class="card-header">
-                                    <strong class="card-title">Card Outline</strong>
+                                    <strong class="card-title">Listado Trayectos</strong>
                                 </div>
                                 <div class="card-body">
                                     <form action="${pageContext.request.contextPath}/pag/removevuelocarrito" method="get" novalidate="novalidate">
@@ -177,7 +178,7 @@
                                             </a>
                                             <div class="media-body">
                                                 <h2 class="text-light display-6">Estadisticas</h2>
-                                                <p><b>USER :</b> 10</p>
+                                                <p><b>Proyect :</b> GR4-TR@VEL</p>
                                             </div>
                                         </div>
                                     </div>
@@ -186,7 +187,7 @@
                                             <b>
                                                 <a><i class='fa fa-arrow-circle-o-right'></i> Total Nº Viajeros:
                                                     <span class="badge badge-warning pull-right r-activity">
-                                                        <%= total_use %> <i class='fa fa-fighter-jet'></i>
+                                                        <%= total_use%> <i class='fa fa-users'></i>
                                                     </span>
                                                 </a>
                                             </b>
@@ -195,7 +196,7 @@
                                             <b>
                                                 <a><i class='fa fa-arrow-circle-o-right'></i> Total bruto:
                                                     <span class="badge badge-warning pull-right r-activity">
-                                                        <%= total_pay %> <i class='fa fa-eur'></i>
+                                                        <%= total_pay%> <i class='fa fa-eur'></i>
                                                     </span>
                                                 </a>
                                             </b>
@@ -204,7 +205,7 @@
                                             <b>
                                                 <a><i class='fa fa-arrow-circle-o-right'></i> Total Ganancias:
                                                     <span class="badge badge-warning pull-right r-activity">
-                                                        <%= total_gan %> <i class='fa fa-eur'></i>
+                                                        <%= total_gan%> <i class='fa fa-eur'></i>
                                                     </span>
                                                 </a>
                                             </b>
@@ -231,5 +232,21 @@
                 </div>
             </footer>
         </div>
+        <!-- Scripts -->
+        <script src="${pageContext.request.contextPath}/res/js/admin/lib/data-table/datatables.min.js"></script>
+        <script src="${pageContext.request.contextPath}/res/js/admin/lib/data-table/dataTables.bootstrap.min.js"></script>
+        <script src="${pageContext.request.contextPath}/res/js/admin/lib/data-table/dataTables.buttons.min.js"></script>
+        <script src="${pageContext.request.contextPath}/res/js/admin/lib/data-table/buttons.bootstrap.min.js"></script>
+        <script src="${pageContext.request.contextPath}/res/js/admin/lib/data-table/jszip.min.js"></script>
+        <script src="${pageContext.request.contextPath}/res/js/admin/lib/data-table/vfs_fonts.js"></script>
+        <script src="${pageContext.request.contextPath}/res/js/admin/lib/data-table/buttons.html5.min.js"></script>
+        <script src="${pageContext.request.contextPath}/res/js/admin/lib/data-table/buttons.print.min.js"></script>
+        <script src="${pageContext.request.contextPath}/res/js/admin/lib/data-table/buttons.colVis.min.js"></script>
+        <script src="${pageContext.request.contextPath}/res/js/admin/init/datatables-init.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#bootstrap-data-table-export').DataTable();
+            });
+        </script>
     </body>
 </html>

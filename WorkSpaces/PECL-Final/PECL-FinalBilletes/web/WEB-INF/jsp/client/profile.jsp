@@ -31,8 +31,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Ela Admin - HTML5 Admin Template</title>
-        <meta name="description" content="Ela Admin - HTML5 Admin Template">
+        <title>Perfil Usuario</title>
+        <meta name="description" content="Perfil de Usuario">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/res/css/admin.css">
         <link href="${pageContext.request.contextPath}/res/css/admin/lib/datatable/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -142,29 +142,8 @@
                         out.append((Integer.valueOf(status) >= 0) ? "Success" : "Out").append("!!!");
                         out.append("</span>");
                         switch (status) {
-                            case "2":
-                                out.append(" - El villete o billetes an sido comprados corectamente");
-                                break;
-                            case "1":
-                                out.append(" - Se ha eliminado vuelo del la cesta de la compra satisfactoriamente.");
-                                break;
                             case "0":
-                                out.append(" - Se añadio el vuelo correctamente al a la cesta de la compra.");
-                                break;
-                            case "-1":
-                                out.append(" - No se pudo añadir el vuelo al carrito.");
-                                break;
-                            case "-2":
-                                out.append(" - No se pudo boorar el emento del carrito.");
-                                break;
-                            case "-3":
-                                out.append(" - La session Caduco se perdio el carrito");
-                                break;
-                            case "-4":
-                                out.append(" - No Se encontro el vuelo en el carrito algo fue mal.");
-                                break;
-                            case "-5":
-                                out.append(" - La validacion del villete fallo no se pudo completar la compra.");
+                                out.append(" - Se Finalizo satisfactoriamen la compra del billete.");
                                 break;
                         }
                         out.append("<button type='button' class='close' data-dismiss='alert' aria-label='Close'>");
@@ -178,7 +157,7 @@
                         <div class="col-md-8">
                             <div class="card border border-success">
                                 <div class="card-header">
-                                    <strong class="card-title">Card Outline</strong>
+                                    <strong class="card-title">Historial Viajes</strong>
                                 </div>
                                 <div class="card-body">
                                     <form action="${pageContext.request.contextPath}/pag/removevuelocarrito" method="get" novalidate="novalidate">

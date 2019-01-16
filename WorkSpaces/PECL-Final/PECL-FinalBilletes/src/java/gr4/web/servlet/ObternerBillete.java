@@ -28,7 +28,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class ObternerBillete extends HttpServlet {
 
     private Carrito car = null;
-    private String url = "/pag/carrito.html";
+    private String url  = "/client/profile.html";
     private Integer status = 0;
 
     /**
@@ -68,6 +68,7 @@ public class ObternerBillete extends HttpServlet {
                 }
             } catch (NumberFormatException ex) {
                 Logger.getLogger(ObternerBillete.class.getName()).log(Level.SEVERE, null, ex);
+                url    = "/pag/carrito.html";
                 status = -1;
             }
         }

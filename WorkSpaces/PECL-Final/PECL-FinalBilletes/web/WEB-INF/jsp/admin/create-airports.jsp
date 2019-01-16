@@ -15,8 +15,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Crear Aeropuerto.</title>
-        <meta name="description" content="Ela Admin - HTML5 Admin Template">
+        <title>Alta Aeropuertos</title>
+        <meta name="description" content="Alta Aeropuertos">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/res/css/admin.css">
         <script src="${pageContext.request.contextPath}/res/js/jquery.min.js" type="text/javascript"></script>

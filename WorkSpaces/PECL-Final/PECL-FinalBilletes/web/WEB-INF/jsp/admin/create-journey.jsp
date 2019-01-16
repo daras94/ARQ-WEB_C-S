@@ -18,8 +18,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Admin Dasboard</title>
-        <meta name="description" content="Ela Admin - HTML5 Admin Template">
+        <title>Alta Trayectos</title>
+        <meta name="description" content="Alta Trayectos">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/res/css/admin.css">
         <link href="${pageContext.request.contextPath}/res/css/bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>

@@ -21,7 +21,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Ela Admin - HTML5 Admin Template</title>
-        <meta name="description" content="Ela Admin - HTML5 Admin Template">
+        <meta name="description" content="Finalizar Compra">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/res/css/admin.css">
         <link href="${pageContext.request.contextPath}/res/css/admin/lib/datatable/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -153,7 +153,7 @@
                         <div class="col-md-8">
                             <div class="card border border-success">
                                 <div class="card-header">
-                                    <strong class="card-title">Card Outline</strong>
+                                    <strong class="card-title">Listado Billetes</strong>
                                 </div>
                                 <div class="card-body">
                                     <form action="${pageContext.request.contextPath}/pag/removevuelocarrito" method="get" novalidate="novalidate">
