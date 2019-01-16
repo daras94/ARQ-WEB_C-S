@@ -99,8 +99,7 @@ CREATE TABLE public.usuarios (
     contrasena text COLLATE pg_catalog."default" NOT NULL,
     DNI varchar(9) NOT NULL,
 	  ENABLED BOOLEAN NOT NULL,
-    CONSTRAINT usuarios_pkey PRIMARY KEY (DNI),
-    CONSTRAINT verificarnombre CHECK (nombre ~ '^([A-ZÁÉÍÓÚÑ][a-záéíóúñü]*\s)+\s*$'::text)
+    CONSTRAINT usuarios_pkey PRIMARY KEY (DNI)
 );
 
 ALTER TABLE public.usuarios OWNER to web_generic;
@@ -124,44 +123,4 @@ ALTER TABLE public.authorities OWNER to web_generic;
 
 INSERT INTO public.authorities(DNI, AUTHORITY) VALUES('56708090F', 'ROLE_ADMIN');
 INSERT INTO public.authorities(DNI, AUTHORITY) VALUES('00000000P', 'ROLE_USER');
-
-------------------------------------------------------------------
--- Function: public.comprobar()
-------------------------------------------------------------------
-DROP FUNCTION IF EXISTS public.comprobar();
-CREATE OR REPLACE FUNCTION public.comprobar()
-  RETURNS trigger AS
-$BODY$DECLARE letrasValidas CHAR(23);
-	letraCorrecta CHAR;
-	letraLeida CHAR(24);
-	valor INTEGER;
-	resto INTEGER;
-BEGIN
-	letrasValidas:='TRWAGMYFPDXBNJZSQVHLCKE';
-	valor:=(CAST(substring(NEW.DNI,1,8)AS INTEGER));
-	resto:=valor%23;
-	letraleida:=substring(NEW.DNI,9,9);
-	letraCorrecta := SUBSTR(letrasValidas, resto+1, 1);
-	IF (letraCorrecta = letraLeida) THEN 
-		RAISE NOTICE 'CORRECTO';
-		RETURN new;
-	ELSE 
-		RAISE EXCEPTION 'ERROR';
-		RETURN null;
-	END IF;
-END$BODY$
-  LANGUAGE plpgsql VOLATILE
-  COST 100;
-ALTER FUNCTION public.comprobar() OWNER TO postgres;
-
-
-------------------------------------------------------------------
--- Trigger: comprobardni
-------------------------------------------------------------------
-DROP TRIGGER IF EXISTS comprobardni ON public.usuarios;
-CREATE TRIGGER comprobardni
-    BEFORE INSERT OR UPDATE 
-    ON public.usuarios
-    FOR EACH ROW
-EXECUTE PROCEDURE public.comprobar();
 
