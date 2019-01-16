@@ -27,7 +27,7 @@ public class Perfil {
 
     public String[] getInfoUser(String dni) {
         String[] user = new String[]{};
-        final String query = "SELECT * FROM public.usuarios";
+        final String query = "SELECT * FROM public.usuarios where dni='" + dni + "'";
         try {
             PreparedStatement stmt = con.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();

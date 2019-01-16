@@ -170,7 +170,7 @@
                                                     <th>Pecio</th>
                                                     <th>Fecha</th>
                                                     <th>Plazas</th>
-                                                    <th>Num Billetes</th>
+                                                    <th>Nº Pasajes</th>
                                                     <th>#######</th>
                                                 </tr>
                                             </thead>

@@ -129,7 +129,7 @@
                                             <col width="30">
                                             <col>
                                             <col>
-                                            <col width="120">
+                                            <col width="150">
                                             <col width="80">
                                             <col width="80">
                                             <thead>
@@ -137,7 +137,7 @@
                                                     <th>ID</th>
                                                     <th>Origen</th>
                                                     <th>Destino</th>
-                                                    <th>Nº Viajeros</th>
+                                                    <th>Nº Pasajeros</th>
                                                     <th>PAY</th>
                                                     <th>Ganacias</th>
                                                 </tr>

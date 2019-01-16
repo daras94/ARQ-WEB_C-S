@@ -155,7 +155,7 @@
                                                 <th>Aeropuerto Destino</th>
                                                 <th>Pecio</th>
                                                 <th>Fecha</th>
-                                                <th>Num Plazas</th>
+                                                <th>Nº Plazas</th>
                                                 <th>######</th>
                                             </tr>
                                         </thead>
