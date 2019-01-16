@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class Trayectos {
     
-    private final Connection com;
+    private Connection com;
 
     public Trayectos(Connection com) {
         this.com = com;

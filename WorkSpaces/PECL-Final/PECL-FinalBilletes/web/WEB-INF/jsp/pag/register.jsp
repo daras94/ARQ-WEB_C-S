@@ -12,11 +12,7 @@
     <title>Ela Admin - HTML5 Admin Template</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="assets/css/style.css">
     <link href="${pageContext.request.contextPath}/res/css/admin.css" rel="stylesheet" type="text/css"/>
-
 </head>
 <body class="bg-dark">
     <div class="sufee-login d-flex align-content-center flex-wrap">
@@ -44,7 +40,7 @@
                         <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button>
                     </form>
                 </div>
-                 <%
+                <%
                     String status = request.getParameter("status");
                     if (status != null) {
                         out.append("<br />");

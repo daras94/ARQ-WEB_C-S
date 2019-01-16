@@ -7,7 +7,6 @@ package gr4.web.servlet;
 
 import gr4.web.util.Trayectos;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;

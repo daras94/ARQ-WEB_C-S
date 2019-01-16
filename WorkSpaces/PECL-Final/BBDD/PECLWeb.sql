@@ -96,8 +96,6 @@ DROP TABLE IF EXISTS public.usuarios Restrict;
 CREATE TABLE public.usuarios (
     nombre text COLLATE pg_catalog."default" NOT NULL,
     contrasena text COLLATE pg_catalog."default" NOT NULL,
-    rango text COLLATE pg_catalog."default" NOT NULL,
-    compras_totales integer,
     DNI varchar(9) NOT NULL,
 	  ENABLED BOOLEAN NOT NULL,
     CONSTRAINT usuarios_pkey PRIMARY KEY (DNI),
@@ -106,8 +104,8 @@ CREATE TABLE public.usuarios (
 
 ALTER TABLE public.usuarios OWNER to web_generic;
 
-INSERT INTO public.usuarios(nombre, contrasena, rango, compras_totales, DNI, enabled)  VALUES('user', '123', 'P', 0, '00000000P', true);
-INSERT INTO public.usuarios(nombre, contrasena, rango, compras_totales, DNI, enabled) VALUES('admin', '123', 'P', 0, '56708090F', true);
+INSERT INTO public.usuarios(nombre, contrasena, DNI, enabled)  VALUES('user', '123', '00000000P', true);
+INSERT INTO public.usuarios(nombre, contrasena, DNI, enabled) VALUES('admin', '123', '56708090F', true);
 
 ------------------------------------------------------------------
 -- Table: public.usuarios
@@ -166,4 +164,3 @@ CREATE TRIGGER comprobardni
     FOR EACH ROW
 EXECUTE PROCEDURE public.comprobar();
 
-COMMENT ON COLUMN public.usuarios.compras_totales IS 'Compras totales para ver si hay que aplicar el descuento';

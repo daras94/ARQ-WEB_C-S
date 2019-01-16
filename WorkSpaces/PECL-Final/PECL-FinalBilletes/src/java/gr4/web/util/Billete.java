@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  */
 public class Billete {
 
-    private final Connection con;
+    private Connection con;
 
     public Billete(Connection con) {
         this.con = con;
@@ -42,8 +42,8 @@ public class Billete {
         return ide;
     }
     
-    public int insertBillete(String origen, String destino, String fecha, String id, String dni) {
-        final String query = "INSERT INTO public.billete(aer_origen, aer_destino, fecha, identificador, id_usuario) VALUES ('" + origen +"', '" + destino + "', '" + fecha + "', '" + id + "', '" + dni + "')";
+    public int insertBillete(String origen, String destino, String fecha, String id, String dni, String id_trayecto) {
+        final String query = "INSERT INTO public.billete(aer_origen, aer_destino, fecha, identificador, id_usuario, id_trayecto) VALUES ('" + origen +"', '" + destino + "', '" + fecha + "', '" + id + "', '" + dni + "', " + id_trayecto + ")";
         int status = 0;
         try {
             Statement stmt = con.createStatement();
@@ -63,10 +63,11 @@ public class Billete {
             PreparedStatement stmt = con.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                String origen   = rs.getString("aer_origen");
-                String destino  = rs.getString("aer_destino");
-                String fecha    = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date());
-                insertBillete(origen, destino, fecha, id_bill, dni);
+                String origen     = rs.getString("aer_origen");
+                String destino    = rs.getString("aer_destino");
+                String id_trayect = String.valueOf(rs.getInt("id_viaje"));
+                String fecha      = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date());
+                insertBillete(origen, destino, fecha, id_bill, dni, id_trayect);
             }
             new Comprar(con).insertCompra(id_bill, dni, total);
             new Trayectos(con).updateTrayectoPlazas(id_vuelo, num_billetes);
@@ -86,7 +87,7 @@ public class Billete {
             while (rs.next()) {
                 String origen  = rs.getString("aer_origen");
                 String destino = rs.getString("aer_destino");
-                String fecha   = String.valueOf(rs.getDate("fecha"));
+                String fecha   = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(rs.getTimestamp("fecha"));
                 String id      = rs.getString("id_compra");
                 String total   = String.valueOf(rs.getFloat("total"));
                 bill.add(bill.size(), new String[]{origen, destino, fecha, id, total});

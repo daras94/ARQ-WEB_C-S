@@ -3,6 +3,10 @@
     Created on : 05-ene-2019, 13:20:50
     Author     : david
 --%>
+<%@page import="gr4.web.util.Estadisticas"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="gr4.web.util.Comprar"%>
 <%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%@page import="org.springframework.security.core.authority.SimpleGrantedAuthority"%>
 <%@page import="java.util.Collection"%>
@@ -108,44 +112,109 @@
                     </div>
                 </div>
             </header>
-            <div class="breadcrumbs">
-                <div class="breadcrumbs-inner">
-                    <div class="row m-0">
-                        <div class="col-sm-4">
-                            <div class="page-header float-left">
-                                <div class="page-title">
-                                    <h1>Dashboard</h1>
-                                </div>
-                            </div>
-                        </div>   
-                        <div class="col-sm-8">
-                            <div class="page-header float-right">
-                                <div class="page-title">
-                                    <ol class="breadcrumb text-right">
-                                        <%
-                                            ServletContext ctx = pageContext.getServletContext();
-                                            String[] path = ctx.getContextPath().split("/");
-                                            for (int i = 1; i < path.length; i++) {
-                                                if (i == 1) {
-                                                    out.append("<li").append((i == path.length) ? "class='active'" : "").append("><a href=''>/</a></li>");
-                                                } else {
-                                                    out.append("<li").append((i == path.length) ? "class='active'" : "").append("><a href=''>");
-                                                    out.append(path[i]).append("</a>");
-                                                    out.append("</li>");
-                                                }
-                                            }
-                                        %>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!-- /#header -->
             <!-- Content -->
             <div class="content">
-
+                <div class="animated fadeIn">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card border border-success">
+                                <div class="card-header">
+                                    <strong class="card-title">Card Outline</strong>
+                                </div>
+                                <div class="card-body">
+                                    <form action="${pageContext.request.contextPath}/pag/removevuelocarrito" method="get" novalidate="novalidate">
+                                        <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                            <col width="30">
+                                            <col>
+                                            <col>
+                                            <col width="120">
+                                            <col width="80">
+                                            <col width="80">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Origen</th>
+                                                    <th>Destino</th>
+                                                    <th>Nº Viajeros</th>
+                                                    <th>PAY</th>
+                                                    <th>Ganacias</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <%
+                                                    float total_pay = 0;
+                                                    float total_gan = 0;
+                                                    float total_use = 0;
+                                                    ArrayList<String[]> stadis = new Estadisticas((Connection) pageContext.getServletContext().getAttribute("conexion")).getEstadisticas();
+                                                    if (!stadis.isEmpty()) {
+                                                        for (int i = 0; i < stadis.size(); i++) {
+                                                            int end_pos = stadis.get(i).length;
+                                                            out.append("<tr>");
+                                                            for (int j = 0; j < stadis.get(i).length; j++) {
+                                                                out.append("<td>").append(stadis.get(i)[j]).append(((j > end_pos - 2) ? " <i class='fa fa-eur'></i>" : "")).append("</td>");
+                                                            }
+                                                            out.append("</tr>");
+                                                            total_use += Float.valueOf(stadis.get(i)[end_pos - 3]);
+                                                            total_pay += Float.valueOf(stadis.get(i)[end_pos - 2]);
+                                                            total_gan += Float.valueOf(stadis.get(i)[end_pos - 1]);
+                                                        }
+                                                    }
+                                                %>
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <aside class="profile-nav alt">
+                                <section class="card">
+                                    <div class="card-header user-header alt bg-dark">
+                                        <div class="media">
+                                            <a href="#">
+                                                <img class="align-self-center rounded-circle mr-3" style="width:130px; height:130px;" alt="" src="${pageContext.request.contextPath}/res/img/a1.jpg">
+                                            </a>
+                                            <div class="media-body">
+                                                <h2 class="text-light display-6">Estadisticas</h2>
+                                                <p><b>USER :</b> 10</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <b>
+                                                <a><i class='fa fa-arrow-circle-o-right'></i> Total Nº Viajeros:
+                                                    <span class="badge badge-warning pull-right r-activity">
+                                                        <%= total_use %> <i class='fa fa-fighter-jet'></i>
+                                                    </span>
+                                                </a>
+                                            </b>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>
+                                                <a><i class='fa fa-arrow-circle-o-right'></i> Total bruto:
+                                                    <span class="badge badge-warning pull-right r-activity">
+                                                        <%= total_pay %> <i class='fa fa-eur'></i>
+                                                    </span>
+                                                </a>
+                                            </b>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>
+                                                <a><i class='fa fa-arrow-circle-o-right'></i> Total Ganancias:
+                                                    <span class="badge badge-warning pull-right r-activity">
+                                                        <%= total_gan %> <i class='fa fa-eur'></i>
+                                                    </span>
+                                                </a>
+                                            </b>
+                                        </li>
+                                    </ul>
+                                </section>
+                            </aside>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- /.content -->
             <div class="clearfix"></div>

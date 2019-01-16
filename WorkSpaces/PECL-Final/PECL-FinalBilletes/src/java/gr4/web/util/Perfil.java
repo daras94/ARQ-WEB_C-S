@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class Perfil {
 
-    private final Connection con;
+    private Connection con;
 
     public Perfil(Connection con) {
         this.con = con;
@@ -47,15 +47,15 @@ public class Perfil {
     public int insertUser(String nombre, String pass, String dni) {
         int status = 0;
         if (!validateUser(dni)) {
-            final String query_01 = "INSERT INTO public.usuarios(nombre, contrasena, DNI, enabled)  VALUES('" + nombre + "', '" + pass + "', '" + dni + "', true);";
-            final String query_02 = "INSERT INTO public.authorities(DNI, AUTHORITY) VALUES('" + dni + "', 'ROLE_USER')";
+            final String query_01 = "INSERT INTO public.usuarios(nombre, contrasena, dni, enabled)  VALUES('" + nombre + "', '" + pass + "', '" + dni + "', true);";
+            final String query_02 = "INSERT INTO public.authorities(dni, authority) VALUES('" + dni + "', 'ROLE_USER')";
             try {
                 Statement stmt = con.createStatement();
-                stmt.executeUpdate(query_02);
                 stmt.executeUpdate(query_01);
+                stmt.executeUpdate(query_02);
                 stmt.closeOnCompletion();
             } catch (SQLException ex) {
-                Logger.getLogger(Aeropuerto.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Perfil.class.getName()).log(Level.SEVERE, null, ex);
                 status = -1;
             }
         } else {

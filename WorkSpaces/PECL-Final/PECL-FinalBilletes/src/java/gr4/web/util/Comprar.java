@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class Comprar {
 
-    private final Connection com;
+    private Connection com;
 
     public Comprar(Connection com) {
         this.com = com;

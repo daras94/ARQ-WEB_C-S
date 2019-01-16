@@ -185,7 +185,7 @@
                                         <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                             <col>
                                             <col>
-                                            <col width="160">
+                                            <col width="180">
                                             <col width="40">
                                             <col width="80">
                                             <thead>
@@ -203,7 +203,7 @@
                                                     String username = null;
                                                     ArrayList<String[]> history = null;
                                                     Connection con = null;
-                                                    try {
+                                                    //try {
                                                         if (auth.isAuthenticated()) {
                                                             con = (Connection) pageContext.getServletContext().getAttribute("conexion");
                                                             Object principal = auth.getPrincipal();
@@ -225,9 +225,9 @@
                                                                 }
                                                             }
                                                         }
-                                                    } catch (NumberFormatException ex) {
+                                                    /*} catch (NumberFormatException ex) {
 
-                                                    }
+                                                    }*/
                                                 %>
                                             </tbody>
                                         </table>
