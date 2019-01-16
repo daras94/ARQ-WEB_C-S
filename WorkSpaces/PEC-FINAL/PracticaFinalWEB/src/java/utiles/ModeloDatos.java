@@ -5,6 +5,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.w3c.dom.Document;
 
 /**
  * Aquí se encontraran todas las funciones que produciran el funcionamiento de
@@ -127,7 +128,7 @@ public class ModeloDatos {
 
     //si compra un billete de avión, se le debe mostrar un resguardo en pdf _< hay que coger los valores de la sesión
     public void imprimierBillete() {
-        /      Document document = new Document();
+              Document document = new Document();
         String ide = generarIdentificador(alfanum);
         String DEST = "C:\\Users\\solea\\Desktop\\Arquitectura y diseño de sistemas web\\Práctica\\PracticaFinal\\ResguardosBilletes\\" + ide + ".pdf";
 

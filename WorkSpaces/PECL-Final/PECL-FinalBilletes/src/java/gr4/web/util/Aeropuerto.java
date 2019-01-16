@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class Aeropuerto {
     
-    private Connection com = null;
+    private final Connection com;
 
     public Aeropuerto(Connection com) {
         this.com = com;

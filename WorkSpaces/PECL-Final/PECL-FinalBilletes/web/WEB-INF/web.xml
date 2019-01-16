@@ -45,6 +45,10 @@
         <servlet-name>PayFullFlyCarrito</servlet-name>
         <servlet-class>gr4.web.servlet.PayFullFlyCarrito</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>registeruser</servlet-name>
+        <servlet-class>gr4.web.servlet.RegisterUser</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>deleteairport</servlet-name>
         <url-pattern>/admin/deleteairport</url-pattern>
@@ -80,6 +84,10 @@
     <servlet-mapping>
         <servlet-name>PayFullFlyCarrito</servlet-name>
         <url-pattern>/client/payfullflycarrito</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>registeruser</servlet-name>
+        <url-pattern>/pag/registeruser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

@@ -6,7 +6,6 @@
 package gr4.web.util;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class Trayectos {
     
-    private Connection com = null;
+    private final Connection com;
 
     public Trayectos(Connection com) {
         this.com = com;

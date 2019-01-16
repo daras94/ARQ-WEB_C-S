@@ -5,32 +5,25 @@
  */
 package gr4.web.servlet;
 
-import gr4.web.util.Billete;
-import gr4.web.util.Carrito;
+import gr4.web.util.Perfil;
+import gr4.web.util.Trayectos;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  *
  * @author david
  */
-public class ObternerBillete extends HttpServlet {
+public class RegisterUser extends HttpServlet {
 
-    private Carrito car = null;
-    private String url = "/pag/carrito.html";
+    private String url     = "/index.html";
     private Integer status = 0;
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -41,37 +34,14 @@ public class ObternerBillete extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ServletContext ctx = request.getServletContext();
-        ArrayList<String[]> compra = (ArrayList<String[]>) request.getSession(true).getAttribute("billete");
-        if ((compra != null) && !compra.isEmpty()) {
-            Authentication auth = null;
-            Connection con      = null;
-            String username     = null;
-            try {
-                auth = ((SecurityContext) request.getSession(true).getAttribute("SPRING_SECURITY_CONTEXT")).getAuthentication();
-                con  = (Connection) ctx.getAttribute("conexion");
-                car  = (Carrito)request.getSession(true).getAttribute("carro");
-                if (auth.isAuthenticated()) {
-                    Object principal = auth.getPrincipal();
-                    if (principal instanceof UserDetails) {
-                        username = ((UserDetails) principal).getUsername();
-                    } else {
-                        username = principal.toString();
-                    }
-                    for (int i = 0; i < compra.size(); i++){
-                        new Billete(con).createBillete(Integer.valueOf(compra.get(i)[0]), Integer.valueOf(compra.get(i)[1]), username, Float.valueOf(compra.get(i)[2]));
-                        if (car != null) {
-                            car.removeProducto(Integer.valueOf(compra.get(i)[0]));
-                        }
-                    }
-                    request.getSession().removeAttribute("billete");
-                }
-            } catch (NumberFormatException ex) {
-                Logger.getLogger(ObternerBillete.class.getName()).log(Level.SEVERE, null, ex);
-                status = -1;
-            }
+        final String nombre = request.getParameter("nombre");
+        final String dni    = request.getParameter("dni");
+        final String pass   = request.getParameter("pass");
+        status = new Perfil((Connection)request.getServletContext().getAttribute("conexion")).insertUser(nombre, pass, dni);
+        if (status < 0) {
+            url = "/pag/register.html";
         }
-        response.sendRedirect(ctx.getContextPath() + this.url + "?status=" + status);
+        response.sendRedirect(request.getServletContext().getContextPath() + this.url + "?status=" + status);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

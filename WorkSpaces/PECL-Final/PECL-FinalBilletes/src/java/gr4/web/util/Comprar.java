@@ -5,7 +5,6 @@
  */
 package gr4.web.util;
 
-import gr4.web.util.Carrito.Vuelos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class Comprar {
 
-    private Connection com;
+    private final Connection com;
 
     public Comprar(Connection com) {
         this.com = com;
@@ -95,12 +94,12 @@ public class Comprar {
                     PreparedStatement stmt = com.prepareStatement(query);
                     ResultSet rs = stmt.executeQuery();
                     if (rs.next()) {
-                        String origen = rs.getString("aer_origen");
-                        String destino = rs.getString("aer_destino");
-                        String precio = String.valueOf(rs.getInt("precio"));
-                        String fecha = String.valueOf(rs.getDate("fecha"));
+                        String origen   = rs.getString("aer_origen");
+                        String destino  = rs.getString("aer_destino");
+                        String precio   = String.valueOf(rs.getInt("precio"));
+                        String fecha    = String.valueOf(rs.getDate("fecha"));
                         String num_bill = billete.get(i)[1];
-                        String total = billete.get(i)[2];
+                        String total    = billete.get(i)[2];
                         compras.add(compras.size(), new String[]{origen, destino, precio, fecha, num_bill, total});
                     }
                     rs.close();
@@ -113,8 +112,8 @@ public class Comprar {
         return compras;
     }
 
-    public int insertCompra(String id, String dni) {
-        final String query = "INSERT INTO public.compras(id_usuario, id_compra)VALUES ('" + dni + "', '" + id + "')";
+    public int insertCompra(String id, String dni, float total) {
+        final String query = "INSERT INTO public.compras(id_usuario, id_compra, total)VALUES ('" + dni + "', '" + id + "', " + total + ")";
         int status = 0;
         try {
             Statement stmt = com.createStatement();

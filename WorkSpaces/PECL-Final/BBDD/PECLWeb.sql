@@ -30,7 +30,7 @@ CREATE TABLE public.aeropuerto (
     CONSTRAINT aeropuertos_pkey PRIMARY KEY (nombre)
 );
 
-ALTER TABLE public.aeropuertos OWNER to web_generic;
+ALTER TABLE public.aeropuerto OWNER to web_generic;
 
 INSERT INTO public.aeropuerto(nombre, tasas) VALUES ('Aeropuerto de Madrid', 15.0);
 INSERT INTO public.aeropuerto(nombre, tasas) VALUES ('Aeropuerto de Barcelona', 35.0);
@@ -49,6 +49,7 @@ DROP TABLE IF EXISTS public.compras Restrict;
 CREATE TABLE public.compras (
     id_usuario text COLLATE pg_catalog."default" NOT NULL,
     id_compra text COLLATE pg_catalog."default" NOT NULL,
+    total real NOT NULL,
     CONSTRAINT compras_pkey PRIMARY KEY (id_compra, id_usuario)
 );
 
@@ -86,7 +87,7 @@ CREATE TABLE public.Billete (
         ON DELETE NO ACTION
 );
 
-ALTER TABLE public.Billete OWNER to web_generic;
+ALTER TABLE public.billete OWNER to web_generic;
 
 ------------------------------------------------------------------
 -- Table: public.usuarios
