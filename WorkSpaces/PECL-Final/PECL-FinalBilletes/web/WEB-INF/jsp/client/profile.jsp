@@ -174,6 +174,7 @@
                                                     <th>Fecha Compra</th>
                                                     <th>Nº ID</th>
                                                     <th>PAY</th>
+                                                    <th>#####</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -196,11 +197,12 @@
                                                                 for (int i = 0; i < history.size(); i++) {
                                                                     int end_pos = history.get(i).length - 1;
                                                                     out.append("<tr>");
-                                                                    for (int j = 0; j < history.get(i).length; j++) {
-                                                                        out.append("<td>").append(history.get(i)[j]).append(((j == end_pos) ? " <i class='fa fa-eur'></i>" : "")).append("</td>");
+                                                                    for (int j = 0; j < history.get(i).length - 1; j++) {
+                                                                        out.append("<td>").append(history.get(i)[j]).append(((j == end_pos - 1) ? " <i class='fa fa-eur'></i>" : "")).append("</td>");
                                                                     }
+                                                                    out.append("<td><a class='btn btn-outline-info btn-sm' href='" + path_url + "/client/verpdfbillete?identificador=" + history.get(i)[end_pos] +"' target='_blank' role='button'>PDF <i class='fa  fa-file-text'></i></a></td>");
                                                                     out.append("</tr>");
-                                                                    total += Float.valueOf(history.get(i)[end_pos]);
+                                                                    total += Float.valueOf(history.get(i)[end_pos - 1]);
                                                                 }
                                                             }
                                                         }

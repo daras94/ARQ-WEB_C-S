@@ -49,6 +49,10 @@
         <servlet-name>registeruser</servlet-name>
         <servlet-class>gr4.web.servlet.RegisterUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VerPDFbillete</servlet-name>
+        <servlet-class>gr4.web.servlet.VerPDFbillete</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>deleteairport</servlet-name>
         <url-pattern>/admin/deleteairport</url-pattern>
@@ -88,6 +92,10 @@
     <servlet-mapping>
         <servlet-name>registeruser</servlet-name>
         <url-pattern>/pag/registeruser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VerPDFbillete</servlet-name>
+        <url-pattern>/client/verpdfbillete</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

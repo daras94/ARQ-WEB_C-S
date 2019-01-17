@@ -90,7 +90,8 @@ public class Billete {
                 String fecha   = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(rs.getTimestamp("fecha"));
                 String id      = rs.getString("id_compra");
                 String total   = String.valueOf(rs.getFloat("total"));
-                bill.add(bill.size(), new String[]{origen, destino, fecha, id, total});
+                String ident   = rs.getString("identificador");
+                bill.add(bill.size(), new String[]{origen, destino, fecha, id, total, ident});
             }
             rs.close();
             stmt.close();
